@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg:          #0E0C0A;
+  --surface:     #181410;
+  --surface2:    #231E17;
+  --surface3:    #2D2620;
+  --border:      #4A3828;
+  --border-hi:   #6B5238;
+  --accent:      #CC2200;
+  --accent2:     #E8A000;
+  --accent-dim:  rgba(204,34,0,0.12);
+  --accent-glow: rgba(204,34,0,0.40);
+  --text:        #F0E8D8;
+  --text-muted:  #8A7A60;
+  --text-dim:    #B8A880;
+  --danger:      #CC2200;
+  --warn:        #E8A000;
+  --mono:        'IBM Plex Mono', monospace;
+  --sans:        'Oswald', sans-serif;
+  --r:           0px;
+  --r-lg:        0px;
+  --transition:  0.15s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.02em;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); }
+::-webkit-scrollbar-thumb:hover { background: var(--border-hi); }
+
+button { cursor: pointer; font-family: inherit; border: none; }
+input, textarea, select { font-family: inherit; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}

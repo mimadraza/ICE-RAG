@@ -1,0 +1,622 @@
+[
+  {
+    "doc_id": "text_2",
+    "filename": "text_2.pdf",
+    "text_file": "extracted_texts/text_2.txt",
+    "total_pages": 4,
+    "word_count": 1517,
+    "estimated_chunks_256t": 9,
+    "estimated_chunks_512t": 4,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_3",
+    "filename": "text_3.pdf",
+    "text_file": "extracted_texts/text_3.txt",
+    "total_pages": 4,
+    "word_count": 1228,
+    "estimated_chunks_256t": 7,
+    "estimated_chunks_512t": 4,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_4",
+    "filename": "text_4.pdf",
+    "text_file": "extracted_texts/text_4.txt",
+    "total_pages": 3,
+    "word_count": 731,
+    "estimated_chunks_256t": 4,
+    "estimated_chunks_512t": 2,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_5",
+    "filename": "text_5.pdf",
+    "text_file": "extracted_texts/text_5.txt",
+    "total_pages": 6,
+    "word_count": 2230,
+    "estimated_chunks_256t": 13,
+    "estimated_chunks_512t": 7,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_6",
+    "filename": "text_6.pdf",
+    "text_file": "extracted_texts/text_6.txt",
+    "total_pages": 2,
+    "word_count": 378,
+    "estimated_chunks_256t": 2,
+    "estimated_chunks_512t": 1,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_7",
+    "filename": "text_7.pdf",
+    "text_file": "extracted_texts/text_7.txt",
+    "total_pages": 1,
+    "word_count": 137,
+    "estimated_chunks_256t": 1,
+    "estimated_chunks_512t": 0,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_8",
+    "filename": "text_8.pdf",
+    "text_file": "extracted_texts/text_8.txt",
+    "total_pages": 3,
+    "word_count": 260,
+    "estimated_chunks_256t": 2,
+    "estimated_chunks_512t": 1,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_9",
+    "filename": "text_9.pdf",
+    "text_file": "extracted_texts/text_9.txt",
+    "total_pages": 2,
+    "word_count": 155,
+    "estimated_chunks_256t": 1,
+    "estimated_chunks_512t": 0,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_10",
+    "filename": "text_10.pdf",
+    "text_file": "extracted_texts/text_10.txt",
+    "total_pages": 8,
+    "word_count": 2665,
+    "estimated_chunks_256t": 16,
+    "estimated_chunks_512t": 8,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_11",
+    "filename": "text_11.pdf",
+    "text_file": "extracted_texts/text_11.txt",
+    "total_pages": 8,
+    "word_count": 2083,
+    "estimated_chunks_256t": 12,
+    "estimated_chunks_512t": 6,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_12",
+    "filename": "text_12.pdf",
+    "text_file": "extracted_texts/text_12.txt",
+    "total_pages": 8,
+    "word_count": 2022,
+    "estimated_chunks_256t": 12,
+    "estimated_chunks_512t": 6,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_13",
+    "filename": "text_13.pdf",
+    "text_file": "extracted_texts/text_13.txt",
+    "total_pages": 5,
+    "word_count": 1940,
+    "estimated_chunks_256t": 11,
+    "estimated_chunks_512t": 6,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_14",
+    "filename": "text_14.pdf",
+    "text_file": "extracted_texts/text_14.txt",
+    "total_pages": 7,
+    "word_count": 3131,
+    "estimated_chunks_256t": 18,
+    "estimated_chunks_512t": 9,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_15",
+    "filename": "text_15.pdf",
+    "text_file": "extracted_texts/text_15.txt",
+    "total_pages": 20,
+    "word_count": 3845,
+    "estimated_chunks_256t": 23,
+    "estimated_chunks_512t": 11,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_16",
+    "filename": "text_16.pdf",
+    "text_file": "extracted_texts/text_16.txt",
+    "total_pages": 13,
+    "word_count": 6516,
+    "estimated_chunks_256t": 38,
+    "estimated_chunks_512t": 19,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_17",
+    "filename": "text_17.pdf",
+    "text_file": "extracted_texts/text_17.txt",
+    "total_pages": 8,
+    "word_count": 2761,
+    "estimated_chunks_256t": 16,
+    "estimated_chunks_512t": 8,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_18",
+    "filename": "text_18.pdf",
+    "text_file": "extracted_texts/text_18.txt",
+    "total_pages": 2,
+    "word_count": 796,
+    "estimated_chunks_256t": 5,
+    "estimated_chunks_512t": 2,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_19",
+    "filename": "text_19.pdf",
+    "text_file": "extracted_texts/text_19.txt",
+    "total_pages": 3,
+    "word_count": 508,
+    "estimated_chunks_256t": 3,
+    "estimated_chunks_512t": 1,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_20",
+    "filename": "text_20.pdf",
+    "text_file": "extracted_texts/text_20.txt",
+    "total_pages": 5,
+    "word_count": 2469,
+    "estimated_chunks_256t": 15,
+    "estimated_chunks_512t": 7,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_21",
+    "filename": "text_21.pdf",
+    "text_file": "extracted_texts/text_21.txt",
+    "total_pages": 11,
+    "word_count": 1000,
+    "estimated_chunks_256t": 6,
+    "estimated_chunks_512t": 3,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_22",
+    "filename": "text_22.pdf",
+    "text_file": "extracted_texts/text_22.txt",
+    "total_pages": 9,
+    "word_count": 1193,
+    "estimated_chunks_256t": 7,
+    "estimated_chunks_512t": 4,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_23",
+    "filename": "text_23.pdf",
+    "text_file": "extracted_texts/text_23.txt",
+    "total_pages": 9,
+    "word_count": 1235,
+    "estimated_chunks_256t": 7,
+    "estimated_chunks_512t": 4,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_24",
+    "filename": "text_24.pdf",
+    "text_file": "extracted_texts/text_24.txt",
+    "total_pages": 6,
+    "word_count": 207,
+    "estimated_chunks_256t": 1,
+    "estimated_chunks_512t": 1,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_25",
+    "filename": "text_25.pdf",
+    "text_file": "extracted_texts/text_25.txt",
+    "total_pages": 7,
+    "word_count": 621,
+    "estimated_chunks_256t": 4,
+    "estimated_chunks_512t": 2,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_26",
+    "filename": "text_26.pdf",
+    "text_file": "extracted_texts/text_26.txt",
+    "total_pages": 7,
+    "word_count": 514,
+    "estimated_chunks_256t": 3,
+    "estimated_chunks_512t": 2,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_27",
+    "filename": "text_27.pdf",
+    "text_file": "extracted_texts/text_27.txt",
+    "total_pages": 8,
+    "word_count": 809,
+    "estimated_chunks_256t": 5,
+    "estimated_chunks_512t": 2,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_28",
+    "filename": "text_28.pdf",
+    "text_file": "extracted_texts/text_28.txt",
+    "total_pages": 8,
+    "word_count": 648,
+    "estimated_chunks_256t": 4,
+    "estimated_chunks_512t": 2,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_29",
+    "filename": "text_29.pdf",
+    "text_file": "extracted_texts/text_29.txt",
+    "total_pages": 6,
+    "word_count": 206,
+    "estimated_chunks_256t": 1,
+    "estimated_chunks_512t": 1,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_30",
+    "filename": "text_30.pdf",
+    "text_file": "extracted_texts/text_30.txt",
+    "total_pages": 7,
+    "word_count": 405,
+    "estimated_chunks_256t": 2,
+    "estimated_chunks_512t": 1,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_31",
+    "filename": "text_31.pdf",
+    "text_file": "extracted_texts/text_31.txt",
+    "total_pages": 7,
+    "word_count": 381,
+    "estimated_chunks_256t": 2,
+    "estimated_chunks_512t": 1,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_32",
+    "filename": "text_32.pdf",
+    "text_file": "extracted_texts/text_32.txt",
+    "total_pages": 7,
+    "word_count": 605,
+    "estimated_chunks_256t": 4,
+    "estimated_chunks_512t": 2,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_33",
+    "filename": "text_33.pdf",
+    "text_file": "extracted_texts/text_33.txt",
+    "total_pages": 7,
+    "word_count": 459,
+    "estimated_chunks_256t": 3,
+    "estimated_chunks_512t": 1,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_34",
+    "filename": "text_34.pdf",
+    "text_file": "extracted_texts/text_34.txt",
+    "total_pages": 6,
+    "word_count": 292,
+    "estimated_chunks_256t": 2,
+    "estimated_chunks_512t": 1,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_35",
+    "filename": "text_35.pdf",
+    "text_file": "extracted_texts/text_35.txt",
+    "total_pages": 10,
+    "word_count": 1269,
+    "estimated_chunks_256t": 7,
+    "estimated_chunks_512t": 4,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_36",
+    "filename": "text_36.pdf",
+    "text_file": "extracted_texts/text_36.txt",
+    "total_pages": 10,
+    "word_count": 1312,
+    "estimated_chunks_256t": 8,
+    "estimated_chunks_512t": 4,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_37",
+    "filename": "text_37.pdf",
+    "text_file": "extracted_texts/text_37.txt",
+    "total_pages": 9,
+    "word_count": 1075,
+    "estimated_chunks_256t": 6,
+    "estimated_chunks_512t": 3,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_38",
+    "filename": "text_38.pdf",
+    "text_file": "extracted_texts/text_38.txt",
+    "total_pages": 9,
+    "word_count": 878,
+    "estimated_chunks_256t": 5,
+    "estimated_chunks_512t": 3,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_39",
+    "filename": "text_39.pdf",
+    "text_file": "extracted_texts/text_39.txt",
+    "total_pages": 9,
+    "word_count": 970,
+    "estimated_chunks_256t": 6,
+    "estimated_chunks_512t": 3,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_40",
+    "filename": "text_40.pdf",
+    "text_file": "extracted_texts/text_40.txt",
+    "total_pages": 8,
+    "word_count": 2666,
+    "estimated_chunks_256t": 16,
+    "estimated_chunks_512t": 8,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_41",
+    "filename": "text_41.pdf",
+    "text_file": "extracted_texts/text_41.txt",
+    "total_pages": 9,
+    "word_count": 811,
+    "estimated_chunks_256t": 5,
+    "estimated_chunks_512t": 2,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_42",
+    "filename": "text_42.pdf",
+    "text_file": "extracted_texts/text_42.txt",
+    "total_pages": 7,
+    "word_count": 675,
+    "estimated_chunks_256t": 4,
+    "estimated_chunks_512t": 2,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_43",
+    "filename": "text_43.pdf",
+    "text_file": "extracted_texts/text_43.txt",
+    "total_pages": 6,
+    "word_count": 438,
+    "estimated_chunks_256t": 3,
+    "estimated_chunks_512t": 1,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_44",
+    "filename": "text_44.pdf",
+    "text_file": "extracted_texts/text_44.txt",
+    "total_pages": 7,
+    "word_count": 881,
+    "estimated_chunks_256t": 5,
+    "estimated_chunks_512t": 3,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_45",
+    "filename": "text_45.pdf",
+    "text_file": "extracted_texts/text_45.txt",
+    "total_pages": 8,
+    "word_count": 1003,
+    "estimated_chunks_256t": 6,
+    "estimated_chunks_512t": 3,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_46",
+    "filename": "text_46.pdf",
+    "text_file": "extracted_texts/text_46.txt",
+    "total_pages": 8,
+    "word_count": 975,
+    "estimated_chunks_256t": 6,
+    "estimated_chunks_512t": 3,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_47",
+    "filename": "text_47.pdf",
+    "text_file": "extracted_texts/text_47.txt",
+    "total_pages": 7,
+    "word_count": 798,
+    "estimated_chunks_256t": 5,
+    "estimated_chunks_512t": 2,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_48",
+    "filename": "text_48.pdf",
+    "text_file": "extracted_texts/text_48.txt",
+    "total_pages": 6,
+    "word_count": 2280,
+    "estimated_chunks_256t": 13,
+    "estimated_chunks_512t": 7,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_49",
+    "filename": "text_49.pdf",
+    "text_file": "extracted_texts/text_49.txt",
+    "total_pages": 3,
+    "word_count": 1699,
+    "estimated_chunks_256t": 10,
+    "estimated_chunks_512t": 5,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_50",
+    "filename": "text_50.pdf",
+    "text_file": "extracted_texts/text_50.txt",
+    "total_pages": 2,
+    "word_count": 1095,
+    "estimated_chunks_256t": 6,
+    "estimated_chunks_512t": 3,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_51",
+    "filename": "text_51.pdf",
+    "text_file": "extracted_texts/text_51.txt",
+    "total_pages": 28,
+    "word_count": 4294,
+    "estimated_chunks_256t": 25,
+    "estimated_chunks_512t": 13,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_52",
+    "filename": "text_52.pdf",
+    "text_file": "extracted_texts/text_52.txt",
+    "total_pages": 6,
+    "word_count": 3185,
+    "estimated_chunks_256t": 19,
+    "estimated_chunks_512t": 9,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_53",
+    "filename": "text_53.pdf",
+    "text_file": "extracted_texts/text_53.txt",
+    "total_pages": 5,
+    "word_count": 1772,
+    "estimated_chunks_256t": 10,
+    "estimated_chunks_512t": 5,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_54",
+    "filename": "text_54.pdf",
+    "text_file": "extracted_texts/text_54.txt",
+    "total_pages": 34,
+    "word_count": 19934,
+    "estimated_chunks_256t": 117,
+    "estimated_chunks_512t": 59,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_55",
+    "filename": "text_55.pdf",
+    "text_file": "extracted_texts/text_55.txt",
+    "total_pages": 108,
+    "word_count": 987,
+    "estimated_chunks_256t": 6,
+    "estimated_chunks_512t": 3,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_56",
+    "filename": "text_56.pdf",
+    "text_file": "extracted_texts/text_56.txt",
+    "total_pages": 5,
+    "word_count": 1437,
+    "estimated_chunks_256t": 8,
+    "estimated_chunks_512t": 4,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_57",
+    "filename": "text_57.pdf",
+    "text_file": "extracted_texts/text_57.txt",
+    "total_pages": 1,
+    "word_count": 93,
+    "estimated_chunks_256t": 1,
+    "estimated_chunks_512t": 0,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_58",
+    "filename": "text_58.pdf",
+    "text_file": "extracted_texts/text_58.txt",
+    "total_pages": 2,
+    "word_count": 321,
+    "estimated_chunks_256t": 2,
+    "estimated_chunks_512t": 1,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_59",
+    "filename": "text_59.pdf",
+    "text_file": "extracted_texts/text_59.txt",
+    "total_pages": 48,
+    "word_count": 13160,
+    "estimated_chunks_256t": 77,
+    "estimated_chunks_512t": 39,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_60",
+    "filename": "text_60.pdf",
+    "text_file": "extracted_texts/text_60.txt",
+    "total_pages": 4,
+    "word_count": 1487,
+    "estimated_chunks_256t": 9,
+    "estimated_chunks_512t": 4,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_61",
+    "filename": "text_61.pdf",
+    "text_file": "extracted_texts/text_61.txt",
+    "total_pages": 6,
+    "word_count": 2339,
+    "estimated_chunks_256t": 14,
+    "estimated_chunks_512t": 7,
+    "status": "OK"
+  },
+  {
+    "doc_id": "text_62",
+    "filename": "text_62.pdf",
+    "text_file": "extracted_texts/text_62.txt",
+    "total_pages": 0,
+    "word_count": 0,
+    "estimated_chunks_256t": 0,
+    "estimated_chunks_512t": 0,
+    "status": "ERROR"
+  },
+  {
+    "doc_id": "text_63",
+    "filename": "text_63.pdf",
+    "text_file": "extracted_texts/text_63.txt",
+    "total_pages": 1,
+    "word_count": 137,
+    "estimated_chunks_256t": 1,
+    "estimated_chunks_512t": 0,
+    "status": "OK"
+  }
+]

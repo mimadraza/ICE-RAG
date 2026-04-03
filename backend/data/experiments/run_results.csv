@@ -1,0 +1,19 @@
+query_id,query,chunking,retrieval,rerank,faithfulness,relevancy,retrieval_time,generation_time,total_time
+1,Can ICE enter a home with only an administrative warrant?,fixed,semantic,False,0.0,0.7247547507286072,0.10847799999464769,1.19045300000289,1.2989309999975376
+2,What rights does a person have during immigration questioning?,fixed,semantic,False,0.0,0.39207354187965393,0.009794900004635565,24.566361599994707,24.576156499999342
+3,Can a person remain silent if approached by immigration officers?,fixed,semantic,False,1.0,0.5798054337501526,0.0077735999948345125,27.533242799996515,27.54101639999135
+1,Can ICE enter a home with only an administrative warrant?,fixed,hybrid,True,0.0,0.8967919945716858,0.016419100007624365,0.9216775000095367,0.9380966000171611
+2,What rights does a person have during immigration questioning?,fixed,hybrid,True,1.0,0.9910891056060791,0.006541999988257885,27.389339300003485,27.395881299991743
+3,Can a person remain silent if approached by immigration officers?,fixed,hybrid,True,0.75,0.5248865485191345,0.007204900000942871,25.728521400000318,25.73572630000126
+1,Can ICE enter a home with only an administrative warrant?,recursive,semantic,False,0.0,0.8095011115074158,0.01205659999686759,7.0120328000048175,7.024089400001685
+2,What rights does a person have during immigration questioning?,recursive,semantic,False,0.0,0.9910891056060791,0.0047993000043788925,18.672560100007104,18.677359400011483
+3,Can a person remain silent if approached by immigration officers?,recursive,semantic,False,0.875,0.4495907723903656,0.004680699988966808,21.035732399992412,21.04041309998138
+1,Can ICE enter a home with only an administrative warrant?,recursive,hybrid,True,0.0,0.9141574501991272,0.013403000004473142,12.177788600005442,12.191191600009915
+2,What rights does a person have during immigration questioning?,recursive,hybrid,True,1.0,0.7211777567863464,0.008734200004255399,17.986804900006973,17.99553910001123
+3,Can a person remain silent if approached by immigration officers?,recursive,hybrid,True,1.0,0.5798054337501526,0.009461900001042522,16.568233500001952,16.577695400002995
+1,Can ICE enter a home with only an administrative warrant?,semantic,semantic,False,0.0,0.8967919945716858,0.0107787000015378,0.13070110000262503,0.14147980000416283
+2,What rights does a person have during immigration questioning?,semantic,semantic,False,0.875,0.557793915271759,0.005218099991907366,3.5108621999970637,3.516080299988971
+3,Can a person remain silent if approached by immigration officers?,semantic,semantic,False,1.0,0.5798054337501526,0.004979299992555752,1.9743638999934774,1.9793431999860331
+1,Can ICE enter a home with only an administrative warrant?,semantic,hybrid,True,0.0,0.8967919945716858,0.015358700009528548,0.4339765999902738,0.4493352999998024
+2,What rights does a person have during immigration questioning?,semantic,hybrid,True,0.0,0.5532837510108948,0.014379200001712888,0.14722680000704713,0.16160600000876002
+3,Can a person remain silent if approached by immigration officers?,semantic,hybrid,True,1.0,0.5798054337501526,0.014952600002288818,4.215633599989815,4.2305861999921035

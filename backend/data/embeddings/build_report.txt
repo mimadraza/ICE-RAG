@@ -1,0 +1,91 @@
+=======================================================
+FAISS INDEX BUILD REPORT — ICE Rights RAG Corpus
+Generated  : 2026-03-29 01:39
+Model      : all-MiniLM-L6-v2
+=======================================================
+
+Index summary:
+  Strategy       Chunks    Dim   Build time
+--------------------------------------------
+  fixed             283    384        5.4s
+  recursive         354    384        6.4s
+  semantic        2,897    384       14.3s
+
+=======================================================
+Smoke test query: "What rights do I have if ICE comes to my door without a warrant?"
+=======================================================
+
+  [FIXED]
+    Rank 1  score=0.8124  text17
+    "KNOW YOUR RIGHTS
+
+Last updated: December 22, 2025 11:10 am
+
+Share this page
+
+View this Content
+
+Menu
+
+Donate
+
+This embed will serve content from www.youtube.com. See our privacy
+
+Esta página también s"
+    Rank 2  score=0.6898  text30
+    "the right to remain silent, even if the officer has a warrant.
+- You do not have to let police or immigration agents into your home unless they have certain kinds of warrants.
+- If police have an arre"
+    Rank 3  score=0.6754  text8
+    "- Stay calm and keep the door closed. Opening the door does not give them permission to come inside, but it is safer to speak to ICE through the door.
+
+- You have the right to remain silent, even if o"
+
+  [RECURSIVE]
+    Rank 1  score=0.8124  text17
+    "KNOW YOUR RIGHTS
+
+Last updated: December 22, 2025 11:10 am
+
+Share this page
+
+View this Content
+
+Menu
+
+Donate
+
+This embed will serve content from www.youtube.com. See our privacy
+
+Esta página también s"
+    Rank 2  score=0.7549  text6
+    "- Story 552 [YL], Brooklyn, NY, August 2017
+
+Understanding ICE tactics can protect you and give you agency in an ICE encounter, especially where ICE is trying to trick you into not invoking your right"
+    Rank 3  score=0.7189  text15
+    "If ICE agents come to your home, you have the right not to open the door.
+
+ICE agents must have a warrant signed by a judge to enter your home without consent.
+
+It is important to note that a
+
+warrant"
+
+  [SEMANTIC]
+    Rank 1  score=0.7887  text15
+    "ICE agents must have a warrant signed by a judge to enter your home without consent."
+    Rank 2  score=0.7753  text46
+    "Your paragraph text
+
+- ICE can only enter with your permission, or a valid judicial warrant signed by a judge.
+- Ask ICE agents to show their ID and a valid judicial warrant through a window or to sli"
+    Rank 3  score=0.764  text6
+    "If you suspect that ICE  or other law enforcement is trying to enter your home, have a plan for keeping them out.
+
+- You have the right to leave your door closed and remain silent.
+- If they do not ha"
+
+=======================================================
+Next step: run hybrid_search.py to test BM25 + semantic retrieval
+           against all 3 indexes and compare retrieval quality.
+=======================================================

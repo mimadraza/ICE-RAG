@@ -1,0 +1,83 @@
+==========================================================
+EXTRACTION REPORT — ICE Rights RAG Corpus
+Generated  : 2026-03-28 23:27
+Extractor  : Docling
+Cleaning   : 17-step pipeline
+==========================================================
+PDFs processed : 62
+Total pages    : 583
+Total words    : 111,918
+
+Estimated chunk counts after chunking.py:
+  At 256 tokens : ~659 chunks  MEETS 500 requirement
+  At 512 tokens : ~329 chunks  SHORT — need 171 more
+
+PROBLEM FILES (1) — review manually:
+  text_62.pdf               12
+
+
+==========================================================
+File                      Pages    Words  Chunks(256t)
+--------------------------------------------------------
+text_2.pdf                    4    1,517             9
+text_3.pdf                    4    1,228             7
+text_4.pdf                    3      731             4
+text_5.pdf                    6    2,230            13
+text_6.pdf                    2      378             2
+text_7.pdf                    1      137             1
+text_8.pdf                    3      260             2
+text_9.pdf                    2      155             1
+text_10.pdf                   8    2,665            16
+text_11.pdf                   8    2,083            12
+text_12.pdf                   8    2,022            12
+text_13.pdf                   5    1,940            11
+text_14.pdf                   7    3,131            18
+text_15.pdf                  20    3,845            23
+text_16.pdf                  13    6,516            38
+text_17.pdf                   8    2,761            16
+text_18.pdf                   2      796             5
+text_19.pdf                   3      508             3
+text_20.pdf                   5    2,469            15
+text_21.pdf                  11    1,000             6
+text_22.pdf                   9    1,193             7
+text_23.pdf                   9    1,235             7
+text_24.pdf                   6      207             1
+text_25.pdf                   7      621             4
+text_26.pdf                   7      514             3
+text_27.pdf                   8      809             5
+text_28.pdf                   8      648             4
+text_29.pdf                   6      206             1
+text_30.pdf                   7      405             2
+text_31.pdf                   7      381             2
+text_32.pdf                   7      605             4
+text_33.pdf                   7      459             3
+text_34.pdf                   6      292             2
+text_35.pdf                  10    1,269             7
+text_36.pdf                  10    1,312             8
+text_37.pdf                   9    1,075             6
+text_38.pdf                   9      878             5
+text_39.pdf                   9      970             6
+text_40.pdf                   8    2,666            16
+text_41.pdf                   9      811             5
+text_42.pdf                   7      675             4
+text_43.pdf                   6      438             3
+text_44.pdf                   7      881             5
+text_45.pdf                   8    1,003             6
+text_46.pdf                   8      975             6
+text_47.pdf                   7      798             5
+text_48.pdf                   6    2,280            13
+text_49.pdf                   3    1,699            10
+text_50.pdf                   2    1,095             6
+text_51.pdf                  28    4,294            25
+text_52.pdf                   6    3,185            19
+text_53.pdf                   5    1,772            10
+text_54.pdf                  34   19,934           117
+text_55.pdf                 108      987             6
+text_56.pdf                   5    1,437             8
+text_57.pdf                   1       93             1
+text_58.pdf                   2      321             2
+text_59.pdf                  48   13,160            77
+text_60.pdf                   4    1,487             9
+text_61.pdf                   6    2,339            14
+text_62.pdf                   0        0             0
+text_63.pdf                   1      137             1
