@@ -1,10 +1,11 @@
 import json
+import os
 import numpy as np
 from groq import Groq
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from src.config import EMBED_MODEL, GROQ_API_KEY, GEN_MODEL
+from src.config import EMBED_MODEL, GEN_MODEL
 
 _client = None
 _embed_model = None
@@ -13,7 +14,10 @@ _embed_model = None
 def _get_client() -> Groq:
     global _client
     if _client is None:
-        _client = Groq(api_key=GROQ_API_KEY)
+        api_key = os.environ.get("GROQ_API_KEY", "")
+        if not api_key:
+            raise RuntimeError("GROQ_API_KEY environment variable is not set")
+        _client = Groq(api_key=api_key)
     return _client
 
 

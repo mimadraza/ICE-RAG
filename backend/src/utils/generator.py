@@ -1,5 +1,6 @@
+import os
 from groq import Groq
-from src.config import GEN_MODEL, GROQ_API_KEY
+from src.config import GEN_MODEL
 
 _client = None
 
@@ -7,7 +8,10 @@ _client = None
 def _get_client() -> Groq:
     global _client
     if _client is None:
-        _client = Groq(api_key=GROQ_API_KEY)
+        api_key = os.environ.get("GROQ_API_KEY", "")
+        if not api_key:
+            raise RuntimeError("GROQ_API_KEY environment variable is not set")
+        _client = Groq(api_key=api_key)
     return _client
 
 
