@@ -1,0 +1,12 @@
+**/__pycache__
+**/*.pyc
+**/*.pyo
+*.egg-info
+.env
+.git
+venv
+.venv
+env
+
+# Test/build scripts not needed at runtime
+src/Test_pipeline
