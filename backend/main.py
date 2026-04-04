@@ -1,6 +1,11 @@
 from dotenv import load_dotenv
 from pathlib import Path
+import os
+import logging
+logging.basicConfig(level=logging.INFO)
 load_dotenv(Path(__file__).parent / ".env")
+_key = os.getenv("GROQ_API_KEY", "")
+logging.getLogger(__name__).info("GROQ_API_KEY present: %s, length: %d", bool(_key), len(_key))
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
