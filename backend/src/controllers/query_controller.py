@@ -1,6 +1,10 @@
+import logging
+import traceback
 from fastapi import HTTPException
 from src.models.schemas import QueryRequest, QueryResult
 from src.models.pipeline import get_pipeline
+
+logger = logging.getLogger(__name__)
 
 
 class QueryController:
@@ -22,6 +26,7 @@ class QueryController:
         except FileNotFoundError as e:
             raise HTTPException(status_code=404, detail=str(e))
         except Exception as e:
+            logger.error("Pipeline error:\n%s", traceback.format_exc())
             raise HTTPException(status_code=500, detail=f"Pipeline error: {e}")
 
     @staticmethod
