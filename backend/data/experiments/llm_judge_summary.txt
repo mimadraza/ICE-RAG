@@ -1,0 +1,16 @@
+======================================================================
+  COMBINED EVALUATION SUMMARY — ALL CONFIGURATIONS
+  Generated : 2026-04-05 14:55
+  Retrieval : local embeddings (no Pinecone) | rerank=True
+======================================================================
+
+  Config                        Faithfulness   Relevancy
+----------------------------------------------------------------------
+  Semantic | hybrid                   0.3800      0.7099
+  Semantic | semantic                 0.4879      0.6633
+  recursive | hybrid                  0.6950      0.7570
+  recursive | semantic                0.5000      0.7299
+
+======================================================================
+END OF SUMMARY
+======================================================================

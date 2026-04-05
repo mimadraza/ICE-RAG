@@ -1,0 +1,966 @@
+[
+  {
+    "query": "Can ICE enter a home with only an administrative warrant?",
+    "answer": "No, ICE cannot enter a home with only an administrative warrant. According to the text, an administrative warrant does not allow agents to enter private areas without permission, and it is not signed by a judge.",
+    "retrieval_time": 0.43,
+    "generation_time": 2.249,
+    "total_time": 2.679,
+    "claims": [
+      "ICE cannot enter a home with only an administrative warrant",
+      "an administrative warrant does not allow agents to enter private areas without permission",
+      "an administrative warrant is not signed by a judge"
+    ],
+    "claim_verification": [
+      {
+        "label": "unsupported",
+        "reason": "The claim that ICE cannot enter a home with only an administrative warrant is supported by the context, which states that administrative warrants do not allow agents to enter private areas without permission and that a judicial warrant is required for home entry.",
+        "claim": "ICE cannot enter a home with only an administrative warrant"
+      },
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that an administrative warrant does not allow agents to enter private areas without permission, and that only a judicial warrant signed by a judge allows entry.",
+        "claim": "an administrative warrant does not allow agents to enter private areas without permission"
+      },
+      {
+        "label": "unsupported",
+        "reason": "The text explicitly states that an administrative warrant is not signed by a judge, but rather by immigration officials, and that it does not allow agents to enter private areas without permission. Additionally, the text provides information on how to verify the validity of a warrant and how to protect one's rights in the event of an ICE visit.",
+        "claim": "an administrative warrant is not signed by a judge"
+      }
+    ],
+    "faithfulness": 0.3333,
+    "alt_questions": [
+      "Can ICE enter a home with an administrative warrant?",
+      "What is the difference between an administrative warrant and a judicial warrant?",
+      "Can ICE enter private areas without permission?"
+    ],
+    "relevancy_scores": [
+      0.9947,
+      0.4813,
+      0.6293
+    ],
+    "relevancy": 0.7018,
+    "id": 1,
+    "sources": [
+      {
+        "chunk_id": "text1_recursive_0000",
+        "doc_id": "text1"
+      },
+      {
+        "chunk_id": "text2_recursive_0002",
+        "doc_id": "text2"
+      },
+      {
+        "chunk_id": "text5_recursive_0009",
+        "doc_id": "text5"
+      },
+      {
+        "chunk_id": "text5_recursive_0007",
+        "doc_id": "text5"
+      },
+      {
+        "chunk_id": "text17_recursive_0000",
+        "doc_id": "text17"
+      }
+    ]
+  },
+  {
+    "query": "What rights does a person have during immigration questioning?",
+    "answer": "You have the right to refuse to sign documents without an attorney present.",
+    "retrieval_time": 0.376,
+    "generation_time": 2.022,
+    "total_time": 2.398,
+    "claims": [],
+    "claim_verification": [],
+    "faithfulness": 0.0,
+    "alt_questions": [
+      "What are my rights when signing documents?",
+      "Can I sign documents without a lawyer?",
+      "Do I need an attorney to sign documents?"
+    ],
+    "relevancy_scores": [
+      0.3882,
+      0.194,
+      0.2281
+    ],
+    "relevancy": 0.2701,
+    "id": 2,
+    "sources": [
+      {
+        "chunk_id": "text46_recursive_0009",
+        "doc_id": "text46"
+      },
+      {
+        "chunk_id": "text43_recursive_0000",
+        "doc_id": "text43"
+      },
+      {
+        "chunk_id": "text25_recursive_0000",
+        "doc_id": "text25"
+      },
+      {
+        "chunk_id": "text32_recursive_0001",
+        "doc_id": "text32"
+      },
+      {
+        "chunk_id": "text20_recursive_0000",
+        "doc_id": "text20"
+      }
+    ]
+  },
+  {
+    "query": "Can a person remain silent if approached by immigration officers?",
+    "answer": "Yes, a person can remain silent if approached by immigration officers. According to the provided context, you do not have to speak to the immigration officer, answer any questions, or show any documents. If you are asked where you were born or how you entered the United States, you may refuse to answer or remain silent.",
+    "retrieval_time": 0.423,
+    "generation_time": 2.756,
+    "total_time": 3.179,
+    "claims": [
+      "A person can remain silent if approached by immigration officers.",
+      "You do not have to speak to the immigration officer.",
+      "You do not have to answer any questions.",
+      "You do not have to show any documents.",
+      "You may refuse to answer where you were born.",
+      "You may refuse to answer how you entered the United States."
+    ],
+    "claim_verification": [
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that a person can remain silent if approached by immigration officers, and provides guidance on how to assert this right.",
+        "claim": "A person can remain silent if approached by immigration officers."
+      },
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that you do not have to speak to the immigration officer, answer any questions, or show any documents.",
+        "claim": "You do not have to speak to the immigration officer."
+      },
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that you do not have to answer any questions, and it provides examples of situations where you can refuse to answer questions, such as when asked about your immigration status or how you entered the United States.",
+        "claim": "You do not have to answer any questions."
+      },
+      {
+        "label": "supported",
+        "reason": "The claim 'You do not have to show any documents' is supported by the context, as it is explicitly stated in the provided text that 'You do not have to speak to the immigration officer, answer any questions, or show any documents.'",
+        "claim": "You do not have to show any documents."
+      },
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that you may refuse to answer questions about where you were born.",
+        "claim": "You may refuse to answer where you were born."
+      },
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that you may refuse to answer how you entered the United States.",
+        "claim": "You may refuse to answer how you entered the United States."
+      }
+    ],
+    "faithfulness": 1.0,
+    "alt_questions": [
+      "What are my rights when approached by immigration officers?",
+      "Can I refuse to answer questions from immigration officers?",
+      "Do I have to show documents to immigration officers?"
+    ],
+    "relevancy_scores": [
+      0.5641,
+      0.6028,
+      0.4215
+    ],
+    "relevancy": 0.5295,
+    "id": 3,
+    "sources": [
+      {
+        "chunk_id": "text43_recursive_0000",
+        "doc_id": "text43"
+      },
+      {
+        "chunk_id": "text8_recursive_0005",
+        "doc_id": "text8"
+      },
+      {
+        "chunk_id": "text15_recursive_0000",
+        "doc_id": "text15"
+      },
+      {
+        "chunk_id": "text8_recursive_0002",
+        "doc_id": "text8"
+      },
+      {
+        "chunk_id": "text43_recursive_0002",
+        "doc_id": "text43"
+      }
+    ]
+  },
+  {
+    "query": "What should I do if ICE comes to my door without a warrant?",
+    "answer": "If ICE comes to your door without a warrant, you should not open the door. You have the right to ask to see the warrant, and if it's not signed by a judge, you can refuse entry. If they enter anyway, do not physically resist. You have the right to say, 'I do not consent to you entering my home or searching my home.'",
+    "retrieval_time": 0.425,
+    "generation_time": 1.356,
+    "total_time": 1.781,
+    "claims": [
+      "You have the right to ask to see the warrant",
+      "If it's not signed by a judge, you can refuse entry",
+      "You have the right to say, 'I do not consent to you entering my home or searching my home.'",
+      "You should not open the door if ICE comes without a warrant",
+      "You should not physically resist if they enter anyway"
+    ],
+    "claim_verification": [
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that you have the right to ask to see the warrant and that a warrant of removal/deportation (Form I-205) does not allow officers to enter a home without consent.",
+        "claim": "You have the right to ask to see the warrant"
+      },
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that ICE agents must have a warrant signed by a judge to enter your home without consent, and that an arrest warrant or administrative warrant of removal does not allow officers to enter a home without consent.",
+        "claim": "If it's not signed by a judge, you can refuse entry"
+      },
+      {
+        "label": "supported",
+        "reason": "The claim is supported by the context, which states that you have the right to say, 'I do not consent to you entering my home or searching my home,' and that ICE agents must have a warrant signed by a judge to enter your home without consent.",
+        "claim": "You have the right to say, 'I do not consent to you entering my home or searching my home.'"
+      },
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that ICE agents must have a warrant signed by a judge to enter your home without consent, and that an arrest warrant or administrative warrant of removal does not allow officers to enter a home without consent.",
+        "claim": "You should not open the door if ICE comes without a warrant"
+      },
+      {
+        "label": "supported",
+        "reason": "The context clearly states that if ICE agents enter your home without a valid warrant signed by a judge, you have the right to refuse entry and not physically resist.",
+        "claim": "You should not physically resist if they enter anyway"
+      }
+    ],
+    "faithfulness": 1.0,
+    "alt_questions": [
+      "What are my rights if ICE comes to my door without a warrant?",
+      "How do I handle an ICE visit without a warrant?",
+      "What should I say if ICE tries to enter my home without a warrant?"
+    ],
+    "relevancy_scores": [
+      0.9058,
+      0.811,
+      0.8578
+    ],
+    "relevancy": 0.8582,
+    "id": 4,
+    "sources": [
+      {
+        "chunk_id": "text15_recursive_0002",
+        "doc_id": "text15"
+      },
+      {
+        "chunk_id": "text3_recursive_0000",
+        "doc_id": "text3"
+      },
+      {
+        "chunk_id": "text6_recursive_0011",
+        "doc_id": "text6"
+      },
+      {
+        "chunk_id": "text30_recursive_0001",
+        "doc_id": "text30"
+      },
+      {
+        "chunk_id": "text17_recursive_0000",
+        "doc_id": "text17"
+      }
+    ]
+  },
+  {
+    "query": "What is the difference between a judicial warrant and an administrative warrant?",
+    "answer": "A judicial warrant requires a judge's signature and a higher legal standard to obtain, whereas an administrative warrant is issued by an executive official and does not require a judge's signature.",
+    "retrieval_time": 0.472,
+    "generation_time": 1.627,
+    "total_time": 2.099,
+    "claims": [
+      "A judicial warrant requires a judge's signature",
+      "A judicial warrant requires a higher legal standard to obtain",
+      "An administrative warrant is issued by an executive official",
+      "An administrative warrant does not require a judge's signature"
+    ],
+    "claim_verification": [
+      {
+        "label": "unsupported",
+        "reason": "The claim that a judicial warrant requires a judge's signature is not supported by the context, as the context discusses administrative warrants issued by ICE agents, which do not require a judge's signature.",
+        "claim": "A judicial warrant requires a judge's signature"
+      },
+      {
+        "label": "unsupported",
+        "reason": "The administrative warrants issued by ICE do not require a higher legal standard to obtain, as they are issued by executive officials rather than a judge, and do not provide the same level of protection as a judicial warrant, which would require probable cause, a rigorous internal process, and independent judgment to ensure that each element of the warrant is supported by probable cause and that proper limitations are placed on the agents' authority.",
+        "claim": "A judicial warrant requires a higher legal standard to obtain"
+      },
+      {
+        "label": "unsupported",
+        "reason": "The administrative warrant issued by an executive official lacks the independent assurance guaranteed by the Fourth Amendment, as it is not reviewed by a neutral and detached magistrate, and does not require the same legal standard to obtain as a judicial warrant does.",
+        "claim": "An administrative warrant is issued by an executive official"
+      },
+      {
+        "label": "unsupported",
+        "reason": "The administrative warrant does not require a judge's signature, but the context suggests that it also lacks the independent assurance and probable cause required by the Fourth Amendment, and the Supreme Court has not considered whether an administrative warrant satisfies the requirements for 'warrants' under the Fourth Amendment.",
+        "claim": "An administrative warrant does not require a judge's signature"
+      }
+    ],
+    "faithfulness": 0.0,
+    "alt_questions": [
+      "What is the difference between a judicial and administrative warrant?",
+      "What is required to obtain a judicial warrant?",
+      "How is an administrative warrant issued?"
+    ],
+    "relevancy_scores": [
+      0.9857,
+      0.6852,
+      0.7883
+    ],
+    "relevancy": 0.8197,
+    "id": 5,
+    "sources": [
+      {
+        "chunk_id": "text6_recursive_0003",
+        "doc_id": "text6"
+      },
+      {
+        "chunk_id": "text5_recursive_0007",
+        "doc_id": "text5"
+      },
+      {
+        "chunk_id": "text1_recursive_0003",
+        "doc_id": "text1"
+      },
+      {
+        "chunk_id": "text5_recursive_0003",
+        "doc_id": "text5"
+      },
+      {
+        "chunk_id": "text1_recursive_0002",
+        "doc_id": "text1"
+      }
+    ]
+  },
+  {
+    "query": "Can ICE arrest someone without a warrant in a public place?",
+    "answer": "Yes, according to the context, ICE can arrest someone without a warrant in a public place.",
+    "retrieval_time": 0.447,
+    "generation_time": 1.396,
+    "total_time": 1.843,
+    "claims": [
+      "ICE can arrest someone without a warrant",
+      "ICE can arrest someone in a public place"
+    ],
+    "claim_verification": [
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that ICE can't enter your home unless they have a signed search warrant or you let them in, and that an arrest warrant or administrative warrant of removal is not enough to come inside your home.",
+        "claim": "ICE can arrest someone without a warrant"
+      },
+      {
+        "label": "unsupported",
+        "reason": "The text explicitly states that ICE can enter areas open to the general public (dining area, parking lot, waiting room) of a business without permission, but it does not provide information about ICE's authority to arrest someone in a public place.",
+        "claim": "ICE can arrest someone in a public place"
+      }
+    ],
+    "faithfulness": 0.5,
+    "alt_questions": [
+      "Can ICE arrest someone without a warrant in a public place?",
+      "Is it legal for ICE to make an arrest without a warrant in a public area?",
+      "Can ICE agents make arrests without a warrant in public spaces?"
+    ],
+    "relevancy_scores": [
+      1.0,
+      0.9425,
+      0.8832
+    ],
+    "relevancy": 0.9419,
+    "id": 6,
+    "sources": [
+      {
+        "chunk_id": "text18_recursive_0000",
+        "doc_id": "text18"
+      },
+      {
+        "chunk_id": "text5_recursive_0009",
+        "doc_id": "text5"
+      },
+      {
+        "chunk_id": "text5_recursive_0006",
+        "doc_id": "text5"
+      },
+      {
+        "chunk_id": "text17_recursive_0000",
+        "doc_id": "text17"
+      },
+      {
+        "chunk_id": "text6_recursive_0011",
+        "doc_id": "text6"
+      }
+    ]
+  },
+  {
+    "query": "What are my rights if I am detained by immigration officers?",
+    "answer": "If you are detained by immigration officers, you have the right to remain silent, refuse to answer questions, and not show any documents that reveal your country of nationality or citizenship. You also have the right to refuse a search of yourself or your personal belongings unless officers have probable cause or a warrant.",
+    "retrieval_time": 0.366,
+    "generation_time": 2.084,
+    "total_time": 2.45,
+    "claims": [
+      "You have the right to remain silent",
+      "You have the right to refuse to answer questions",
+      "You have the right to not show any documents that reveal your country of nationality or citizenship",
+      "You have the right to refuse a search of yourself",
+      "You have the right to refuse a search of your personal belongings",
+      "Officers need probable cause to search you or your belongings",
+      "Officers need a warrant to search you or your belongings"
+    ],
+    "claim_verification": [
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that you have the right to remain silent, even if the officer has a warrant, and that anything you say can be used against you in immigration proceedings.",
+        "claim": "You have the right to remain silent"
+      },
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that you have the right to refuse to answer questions, including 'You do not have to speak to the immigration officer, answer any questions, or show any documents.'",
+        "claim": "You have the right to refuse to answer questions"
+      },
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that you may refuse to show identity documents that reveal your country of nationality or citizenship.",
+        "claim": "You have the right to not show any documents that reveal your country of nationality or citizenship"
+      },
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that you have the right to refuse a search of yourself or your personal belongings unless officers have probable cause or a warrant.",
+        "claim": "You have the right to refuse a search of yourself"
+      },
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that you have the right to refuse a search of your personal belongings unless officers have probable cause or a warrant.",
+        "claim": "You have the right to refuse a search of your personal belongings"
+      },
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that you have the right to refuse a search of yourself or your belongings unless officers have probable cause or a warrant.",
+        "claim": "Officers need probable cause to search you or your belongings"
+      },
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that you have the right to refuse a search of yourself or your personal belongings unless officers have probable cause or a warrant.",
+        "claim": "Officers need a warrant to search you or your belongings"
+      }
+    ],
+    "faithfulness": 1.0,
+    "alt_questions": [
+      "What are my rights if I'm detained by immigration officers?",
+      "Can I refuse to answer questions from immigration officers?",
+      "Do I have to show immigration officers my passport or other identification?"
+    ],
+    "relevancy_scores": [
+      0.9958,
+      0.5296,
+      0.5366
+    ],
+    "relevancy": 0.6873,
+    "id": 7,
+    "sources": [
+      {
+        "chunk_id": "text43_recursive_0000",
+        "doc_id": "text43"
+      },
+      {
+        "chunk_id": "text20_recursive_0000",
+        "doc_id": "text20"
+      },
+      {
+        "chunk_id": "text25_recursive_0000",
+        "doc_id": "text25"
+      },
+      {
+        "chunk_id": "text15_recursive_0000",
+        "doc_id": "text15"
+      },
+      {
+        "chunk_id": "text14_recursive_0000",
+        "doc_id": "text14"
+      }
+    ]
+  },
+  {
+    "query": "Do I have to show identification to immigration officers?",
+    "answer": "You do not have to show identification to immigration officers. However, if you are a non-citizen visa holder, you may be denied entry into the U.S. if you refuse to answer officers' questions. If you are a lawful permanent resident (LPR), you only have to answer questions establishing your identity and permanent residency.",
+    "retrieval_time": 0.377,
+    "generation_time": 2.065,
+    "total_time": 2.442,
+    "claims": [
+      "You do not have to show identification to immigration officers.",
+      "Non-citizen visa holders may be denied entry if they refuse to answer officers' questions.",
+      "Lawful permanent residents only have to answer questions about their identity and permanent residency."
+    ],
+    "claim_verification": [
+      {
+        "label": "unsupported",
+        "reason": "The claim 'You do not have to show identification to immigration officers' is not supported by the context, which states that U.S. citizens do not have to carry proof of citizenship, but presenting it may help resolve an encounter with ICE, and non-citizens may be required to carry valid, unexpired immigration documents.",
+        "claim": "You do not have to show identification to immigration officers."
+      },
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that non-citizen visa holders 'may be denied entry into the U.S. if you refuse to answer officers' questions.'",
+        "claim": "Non-citizen visa holders may be denied entry if they refuse to answer officers' questions."
+      },
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that lawful permanent residents only have to answer questions about their identity and permanent residency.",
+        "claim": "Lawful permanent residents only have to answer questions about their identity and permanent residency."
+      }
+    ],
+    "faithfulness": 0.6667,
+    "alt_questions": [
+      "What identification do I need to show to immigration officers?",
+      "Can I be denied entry into the U.S. if I refuse to answer immigration questions?",
+      "Do I have to answer questions about my immigration status?"
+    ],
+    "relevancy_scores": [
+      0.8914,
+      0.4294,
+      0.5536
+    ],
+    "relevancy": 0.6248,
+    "id": 8,
+    "sources": [
+      {
+        "chunk_id": "text28_recursive_0002",
+        "doc_id": "text28"
+      },
+      {
+        "chunk_id": "text10_recursive_0001",
+        "doc_id": "text10"
+      },
+      {
+        "chunk_id": "text45_recursive_0000",
+        "doc_id": "text45"
+      },
+      {
+        "chunk_id": "text29_recursive_0001",
+        "doc_id": "text29"
+      },
+      {
+        "chunk_id": "text14_recursive_0001",
+        "doc_id": "text14"
+      }
+    ]
+  },
+  {
+    "query": "Can ICE question someone about their immigration status at a workplace?",
+    "answer": "Yes, ICE can question someone about their immigration status at a workplace, but they are not authorized to enter non-public areas of the workplace without a judicial warrant.",
+    "retrieval_time": 0.344,
+    "generation_time": 1.813,
+    "total_time": 2.157,
+    "claims": [
+      "ICE can question someone about their immigration status at a workplace",
+      "ICE is not authorized to enter non-public areas of the workplace without a judicial warrant"
+    ],
+    "claim_verification": [
+      {
+        "label": "unsupported",
+        "reason": "The text does not explicitly state that ICE can question someone about their immigration status at a workplace without a warrant or other legal basis.",
+        "claim": "ICE can question someone about their immigration status at a workplace"
+      },
+      {
+        "label": "supported",
+        "reason": "According to California law, employers cannot turn over employee records or voluntarily allow immigration agents to enter non-public areas of the workplace without a judicial warrant.",
+        "claim": "ICE is not authorized to enter non-public areas of the workplace without a judicial warrant"
+      }
+    ],
+    "faithfulness": 0.5,
+    "alt_questions": [
+      "Can ICE enter a workplace?",
+      "Can ICE question someone about their immigration status?",
+      "Can ICE enter non-public areas of a workplace?"
+    ],
+    "relevancy_scores": [
+      0.6202,
+      0.9233,
+      0.5695
+    ],
+    "relevancy": 0.7043,
+    "id": 9,
+    "sources": [
+      {
+        "chunk_id": "text13_recursive_0001",
+        "doc_id": "text13"
+      },
+      {
+        "chunk_id": "text10_recursive_0001",
+        "doc_id": "text10"
+      },
+      {
+        "chunk_id": "text18_recursive_0000",
+        "doc_id": "text18"
+      },
+      {
+        "chunk_id": "text2_recursive_0001",
+        "doc_id": "text2"
+      },
+      {
+        "chunk_id": "text43_recursive_0002",
+        "doc_id": "text43"
+      }
+    ]
+  },
+  {
+    "query": "What happens if I open the door for ICE agents without a warrant?",
+    "answer": "If you open the door for ICE agents without a warrant, you have the right to refuse to let them enter your home or search your belongings. If they try to force their way in, do not physically resist, but say \"I do not consent to your entry.\"",
+    "retrieval_time": 0.462,
+    "generation_time": 2.498,
+    "total_time": 2.96,
+    "claims": [
+      "You have the right to refuse to let ICE agents enter your home without a warrant",
+      "You have the right to refuse to let ICE agents search your belongings",
+      "You can say 'I do not consent to your entry' if ICE agents try to force their way in"
+    ],
+    "claim_verification": [
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that ICE agents must have a warrant signed by a judge to enter your home without consent, and that a warrant of removal/deportation (Form I-205) does not allow officers to enter a home without consent.",
+        "claim": "You have the right to refuse to let ICE agents enter your home without a warrant"
+      },
+      {
+        "label": "supported",
+        "reason": "The context clearly states that you have the right to refuse to let ICE agents search your belongings, and that you do not have to open the door unless they have a valid search warrant signed by a judge.",
+        "claim": "You have the right to refuse to let ICE agents search your belongings"
+      },
+      {
+        "label": "supported",
+        "reason": "The text explicitly states that you can say 'I do not consent to your entry' if ICE agents try to force their way in, and that you have the right to refuse to let them in without a valid search warrant signed by a judge.",
+        "claim": "You can say 'I do not consent to your entry' if ICE agents try to force their way in"
+      }
+    ],
+    "faithfulness": 1.0,
+    "alt_questions": [
+      "What are my rights when dealing with ICE agents?",
+      "Can I refuse to let ICE agents enter my home?",
+      "How should I respond if ICE agents try to force their way in?"
+    ],
+    "relevancy_scores": [
+      0.7164,
+      0.736,
+      0.6659
+    ],
+    "relevancy": 0.7061,
+    "id": 10,
+    "sources": [
+      {
+        "chunk_id": "text15_recursive_0002",
+        "doc_id": "text15"
+      },
+      {
+        "chunk_id": "text30_recursive_0001",
+        "doc_id": "text30"
+      },
+      {
+        "chunk_id": "text43_recursive_0004",
+        "doc_id": "text43"
+      },
+      {
+        "chunk_id": "text3_recursive_0000",
+        "doc_id": "text3"
+      },
+      {
+        "chunk_id": "text17_recursive_0000",
+        "doc_id": "text17"
+      }
+    ]
+  },
+  {
+    "query": "Can an employer allow ICE into the workplace without a warrant?",
+    "answer": "No, an employer cannot allow ICE into the workplace without a warrant.",
+    "retrieval_time": 0.33,
+    "generation_time": 1.675,
+    "total_time": 2.005,
+    "claims": [],
+    "claim_verification": [],
+    "faithfulness": 0.0,
+    "alt_questions": [
+      "Can an employer allow ICE into the workplace without a warrant?",
+      "Is it legal for an employer to let ICE into the workplace without a warrant?",
+      "Can an employer invite ICE into the workplace without a warrant?"
+    ],
+    "relevancy_scores": [
+      1.0,
+      0.9679,
+      0.9582
+    ],
+    "relevancy": 0.9754,
+    "id": 11,
+    "sources": [
+      {
+        "chunk_id": "text2_recursive_0002",
+        "doc_id": "text2"
+      },
+      {
+        "chunk_id": "text18_recursive_0000",
+        "doc_id": "text18"
+      },
+      {
+        "chunk_id": "text2_recursive_0001",
+        "doc_id": "text2"
+      },
+      {
+        "chunk_id": "text46_recursive_0006",
+        "doc_id": "text46"
+      },
+      {
+        "chunk_id": "text2_recursive_0003",
+        "doc_id": "text2"
+      }
+    ]
+  },
+  {
+    "query": "What rights do undocumented immigrants have in the United States?",
+    "answer": "Undocumented immigrants have the following rights in the United States:\n\n1. They do not have to speak to the immigration officer, answer any questions, or show any documents.\n2. They may refuse to answer questions about where they were born, whether they are a U.S. citizen, or how they entered the country.\n3. They have the right to refuse a search of themselves or their personal belongings unless officers have probable cause or a warrant.\n4. They do not have to consent to a search of themselves or their belongings, but police may pat down their clothing if they suspect a weapon.\n5. If they are detained by ICE, they have the right to consult with a lawyer, but the government is not required to provide one for them.\n6. They have the right to a government-appointed lawyer if they are arrested by police.\n7. They have the right to remain silent and can say \"I choose to remain silent\" if they choose to do so.\n8. They may show a know-your-rights card to the officer that explains that they will remain silent and wish to speak to a lawyer.\n9. If they do not understand English, they can state the language they speak.\n10. They may refuse to show identity documents that reveal their country of nationality or citizenship.",
+    "retrieval_time": 0.309,
+    "generation_time": 6.638,
+    "total_time": 6.948,
+    "claims": [],
+    "claim_verification": [],
+    "faithfulness": 0.0,
+    "alt_questions": [
+      "What rights do undocumented immigrants have in the US?",
+      "What are the rights of undocumented immigrants in the US?",
+      "What rights do undocumented immigrants have when interacting with law enforcement in the US?"
+    ],
+    "relevancy_scores": [
+      0.9975,
+      0.9645,
+      0.8619
+    ],
+    "relevancy": 0.9413,
+    "id": 12,
+    "sources": [
+      {
+        "chunk_id": "text43_recursive_0000",
+        "doc_id": "text43"
+      },
+      {
+        "chunk_id": "text19_recursive_0002",
+        "doc_id": "text19"
+      },
+      {
+        "chunk_id": "text20_recursive_0000",
+        "doc_id": "text20"
+      },
+      {
+        "chunk_id": "text21_recursive_0000",
+        "doc_id": "text21"
+      },
+      {
+        "chunk_id": "text27_recursive_0000",
+        "doc_id": "text27"
+      }
+    ]
+  },
+  {
+    "query": "Does signing an ICE form waive my right to a hearing?",
+    "answer": "According to the context, signing an ICE form may waive your rights or lead to deportation, but it specifically states that signing documents may waive your rights or lead to deportation, without specifying that signing an ICE form is the only way to waive your right to a hearing. However, it does mention that you should not sign anything without fully understanding it and asking to speak with an attorney first.",
+    "retrieval_time": 0.342,
+    "generation_time": 2.41,
+    "total_time": 2.752,
+    "claims": [
+      "Signing an ICE form may waive your rights",
+      "Signing an ICE form may lead to deportation",
+      "Signing documents may waive your rights",
+      "Signing documents may lead to deportation",
+      "You should not sign anything without fully understanding it",
+      "You should ask to speak with an attorney first"
+    ],
+    "claim_verification": [
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that signing documents may waive your rights or lead to deportation, and it advises against signing anything without fully understanding it and consulting a lawyer.",
+        "claim": "Signing an ICE form may waive your rights"
+      },
+      {
+        "label": "unsupported",
+        "reason": "The text does not explicitly state that signing an ICE form will lead to deportation, but rather warns against signing documents without understanding their implications and advises against waiving rights.",
+        "claim": "Signing an ICE form may lead to deportation"
+      },
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that signing documents may waive your rights or lead to deportation, which supports the claim.",
+        "claim": "Signing documents may waive your rights"
+      },
+      {
+        "label": "unsupported",
+        "reason": "The text does not explicitly state that signing documents will lead to deportation, but rather warns against signing documents without understanding their implications, which may include waiving rights or leading to deportation.",
+        "claim": "Signing documents may lead to deportation"
+      },
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that you should not sign anything without fully understanding it, and that you should always ask to speak with an attorney first.",
+        "claim": "You should not sign anything without fully understanding it"
+      },
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that you should not sign any paperwork until you speak with a lawyer, and that you should ask to speak with an attorney first.",
+        "claim": "You should ask to speak with an attorney first"
+      }
+    ],
+    "faithfulness": 0.6667,
+    "alt_questions": [
+      "What are the potential consequences of signing an ICE form?",
+      "What rights may be waived by signing documents related to immigration?",
+      "What should I do before signing any documents related to my immigration case?"
+    ],
+    "relevancy_scores": [
+      0.6449,
+      0.4802,
+      0.4089
+    ],
+    "relevancy": 0.5114,
+    "id": 13,
+    "sources": [
+      {
+        "chunk_id": "text43_recursive_0003",
+        "doc_id": "text43"
+      },
+      {
+        "chunk_id": "text3_recursive_0001",
+        "doc_id": "text3"
+      },
+      {
+        "chunk_id": "text15_recursive_0002",
+        "doc_id": "text15"
+      },
+      {
+        "chunk_id": "text17_recursive_0000",
+        "doc_id": "text17"
+      },
+      {
+        "chunk_id": "text46_recursive_0009",
+        "doc_id": "text46"
+      }
+    ]
+  },
+  {
+    "query": "Can ICE deport someone who has a pending immigration case?",
+    "answer": "Can ICE deport someone who has a pending immigration case?\n\nI do not know. The provided context does not explicitly state whether ICE can deport someone with a pending immigration case. It discusses the process of removal proceedings, deportability grounds, and ICE detainers, but it does not directly address the specific scenario of deporting someone with a pending immigration case.",
+    "retrieval_time": 0.382,
+    "generation_time": 1.528,
+    "total_time": 1.91,
+    "claims": [],
+    "claim_verification": [],
+    "faithfulness": 0.0,
+    "alt_questions": [
+      "Can ICE deport someone with a pending asylum case?",
+      "Can ICE deport someone with a pending visa application?",
+      "Can ICE deport someone with a pending green card application?"
+    ],
+    "relevancy_scores": [
+      0.9151,
+      0.8978,
+      0.8792
+    ],
+    "relevancy": 0.8974,
+    "id": 14,
+    "sources": [
+      {
+        "chunk_id": "text49_recursive_0006",
+        "doc_id": "text49"
+      },
+      {
+        "chunk_id": "text4_recursive_0000",
+        "doc_id": "text4"
+      },
+      {
+        "chunk_id": "text49_recursive_0062",
+        "doc_id": "text49"
+      },
+      {
+        "chunk_id": "text12_recursive_0004",
+        "doc_id": "text12"
+      },
+      {
+        "chunk_id": "text7_recursive_0002",
+        "doc_id": "text7"
+      }
+    ]
+  },
+  {
+    "query": "What is a know-your-rights card and how does it help during ICE encounters?",
+    "answer": "A know-your-rights card is a resource that summarizes common ICE ruses used in person and over the telephone, as well as your rights and protections during ICE encounters. It helps by providing a quick reference guide to assert your rights, such as the right to remain silent, the right to refuse entry, and the right to request a warrant. It also advises on how to handle ICE interactions before they arrive, during, and after an encounter.\n\nAccording to the context, a Know Your Rights card is mentioned in the following sections:\n\n* [4] KnowYourRightsEducationalPresentation: \"Ensure everyone knows their rights and carries a Know Your Rights (KYR) card.\"\n* [5] KNOW YOUR RIGHTS: \"Regardless of your immigration status, you have guaranteed rights under the Constitution. Learn more here about your rights as an immigrant, and how to express them.\"\n\nThe card is not explicitly described in the provided context, but it is implied to be a useful tool for immigrants to assert their rights and navigate ICE encounters.",
+    "retrieval_time": 0.375,
+    "generation_time": 4.666,
+    "total_time": 5.041,
+    "claims": [
+      "A know-your-rights card is a resource that summarizes common ICE ruses used in person and over the telephone, as well as your rights and protections during ICE encounters.",
+      "It helps by providing a quick reference guide to assert your rights, such as the right to remain silent, the right to refuse entry, and the right to request a warrant.",
+      "It also advises on how to handle ICE interactions before they arrive, during, and after an encounter.",
+      "You have guaranteed rights under the Constitution.",
+      "You have rights as an immigrant.",
+      "You can express your rights."
+    ],
+    "claim_verification": [
+      {
+        "label": "supported",
+        "reason": "The claim is supported by the context, which provides detailed information on how to handle ICE encounters, including knowing your rights, refusing entry, and documenting interactions. The context also explains the importance of understanding ICE tactics and having a plan for what to do in case of an encounter.",
+        "claim": "A know-your-rights card is a resource that summarizes common ICE ruses used in person and over the telephone, as well as your rights and protections during ICE encounters."
+      },
+      {
+        "label": "supported",
+        "reason": "The claim is supported by the context, which provides a detailed guide on how to assert your rights in the event of an ICE encounter, including the right to remain silent, the right to refuse entry, and the right to request a warrant.",
+        "claim": "It helps by providing a quick reference guide to assert your rights, such as the right to remain silent, the right to refuse entry, and the right to request a warrant."
+      },
+      {
+        "label": "supported",
+        "reason": "The claim is supported by the context, as the provided text includes a 'Checklist for ICE Arrival' that serves as a guide on how to handle ICE interactions before they arrive, during, and after an encounter.",
+        "claim": "It also advises on how to handle ICE interactions before they arrive, during, and after an encounter."
+      },
+      {
+        "label": "supported",
+        "reason": "The claim is supported by the context, which explicitly states that 'Regardless of your immigration status, you have guaranteed rights under the Constitution.'",
+        "claim": "You have guaranteed rights under the Constitution."
+      },
+      {
+        "label": "unsupported",
+        "reason": "The claim 'You have rights as an immigrant' is supported in the context, but the context is focused on explaining and asserting those rights, not explicitly stating that immigrants have rights. The text assumes that immigrants have rights, but does not directly address the claim.",
+        "claim": "You have rights as an immigrant."
+      },
+      {
+        "label": "supported",
+        "reason": "The context explicitly states that you have the right to refuse entry and remain silent, and that you can assert your rights in various situations, including when ICE agents try to enter your home or workplace.",
+        "claim": "You can express your rights."
+      }
+    ],
+    "faithfulness": 0.8333,
+    "alt_questions": [
+      "What are the rights and protections during ICE encounters?",
+      "What is the purpose of a Know Your Rights card?",
+      "How can a Know Your Rights card help during ICE interactions?"
+    ],
+    "relevancy_scores": [
+      0.7028,
+      0.755,
+      0.8801
+    ],
+    "relevancy": 0.7793,
+    "id": 15,
+    "sources": [
+      {
+        "chunk_id": "text6_recursive_0011",
+        "doc_id": "text6"
+      },
+      {
+        "chunk_id": "text46_recursive_0007",
+        "doc_id": "text46"
+      },
+      {
+        "chunk_id": "text30_recursive_0002",
+        "doc_id": "text30"
+      },
+      {
+        "chunk_id": "text46_recursive_0006",
+        "doc_id": "text46"
+      },
+      {
+        "chunk_id": "text18_recursive_0000",
+        "doc_id": "text18"
+      }
+    ]
+  }
+]

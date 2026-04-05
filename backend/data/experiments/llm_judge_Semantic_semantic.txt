@@ -1,0 +1,133 @@
+======================================================================
+  LLM-AS-A-JUDGE EVALUATION REPORT
+  Generated : 2026-04-05 14:54
+  Config    : Semantic | semantic (local) | rerank=True
+  Queries   : 15
+======================================================================
+
+AGGREGATE METRICS
+  Average Faithfulness : 0.4879  (48.8%)
+  Average Relevancy    : 0.6633
+
+----------------------------------------------------------------------
+QUERY SUMMARY
+----------------------------------------------------------------------
+   ID  Faithfulness   Relevancy  Claims  Query
+----------------------------------------------------------------------
+    1        0.0000      0.7775       2  Can ICE enter a home with only an administrative warran
+    2        0.5000      0.5435       2  What rights does a person have during immigration quest
+    3        1.0000      0.6136       1  Can a person remain silent if approached by immigration
+    4        0.0000      0.9479       0  What should I do if ICE comes to my door without a warr
+    5        0.0000      0.8515       0  What is the difference between a judicial warrant and a
+    6        1.0000      0.4830       3  Can ICE arrest someone without a warrant in a public pl
+    7        0.8182      0.8284      11  What are my rights if I am detained by immigration offi
+    8        1.0000      0.5624       1  Do I have to show identification to immigration officer
+    9        1.0000      0.5591       6  Can ICE question someone about their immigration status
+   10        1.0000      0.7859       2  What happens if I open the door for ICE agents without 
+   11        0.0000      0.7175       2  Can an employer allow ICE into the workplace without a 
+   12        0.0000      0.6764       0  What rights do undocumented immigrants have in the Unit
+   13        1.0000      0.4201       2  Does signing an ICE form waive my right to a hearing?
+   14        0.0000      0.4065       0  Can ICE deport someone who has a pending immigration ca
+   15        0.0000      0.7761       4  What is a know-your-rights card and how does it help du
+
+======================================================================
+  DETAILED EXAMPLES
+======================================================================
+
+  [QUERY 1]  Can ICE enter a home with only an administrative warrant?
+----------------------------------------------------------------------
+
+  ANSWER:
+    No, according to [2], ICE cannot enter a home without a judicial
+    warrant or voluntary permission from an authorized adult.
+
+  FAITHFULNESS
+    ✗ [UNSUPPORTED]  ICE cannot enter a home without a judicial warrant
+         Reason: parse_error
+    ✗ [UNSUPPORTED]  ICE cannot enter a home without voluntary permission from an authorize
+         Reason: The text explicitly states that ICE cannot enter a home without a judicial warra
+  → Faithfulness Score : 0.0000  (0.0%)
+
+  RELEVANCY — ALTERNATIVE QUESTIONS
+    Q1 (sim=0.6654) : What are the requirements for ICE to enter a home?
+    Q2 (sim=0.9186) : Can ICE enter a home without a warrant or permission?
+    Q3 (sim=0.7485) : What is the legal basis for ICE entering a home?
+  → Average Relevancy  : 0.7775
+
+----------------------------------------------------------------------
+
+  [QUERY 7]  What are my rights if I am detained by immigration officers?
+----------------------------------------------------------------------
+
+  ANSWER:
+    If you are detained by immigration officers, you have the right
+    to: * Hire a lawyer * Call a lawyer or your family * Be visited
+    by a lawyer in detention * Have your attorney with you at any
+    hearing before an immigration judge * Request a bond hearing
+    before an immigration judge if you are denied release * Request a
+    phone call to contact a lawyer or your consulate * Request to
+    speak with an attorney * Request assistance from your home
+    country's consulate * Remain silent when asked about your
+    immigration status, where you were born, or how you entered the
+    U.S. * Refuse to sign documents without an attorney present *
+    Request copies of any documents your attorney submits to
+    immigration court.
+
+  FAITHFULNESS
+    ✓ [SUPPORTED]  Hire a lawyer
+         Reason: According to the context, you have the right to hire a lawyer if you are detaine
+    ✓ [SUPPORTED]  Call a lawyer or your family
+         Reason: According to the provided context, you have the right to call a lawyer or your f
+    ✓ [SUPPORTED]  Be visited by a lawyer in detention
+         Reason: According to the provided context, you have the right to be visited by a lawyer 
+    ✗ [UNSUPPORTED]  Have your attorney with you at any hearing before an immigration judge
+         Reason: The context does not mention having an attorney present at a hearing before an i
+    ✗ [UNSUPPORTED]  Request a bond hearing before an immigration judge if you are denied r
+         Reason: The context does not mention requesting a bond hearing before an immigration jud
+    ✓ [SUPPORTED]  Request a phone call to contact a lawyer or your consulate
+         Reason: The context explicitly states that you have the right to request a phone call to
+    ✓ [SUPPORTED]  Request to speak with an attorney
+         Reason: The context explicitly states that you have the right to request to speak with a
+    ✓ [SUPPORTED]  Request assistance from your home country's consulate
+         Reason: According to the provided context, you have the right to request assistance from
+    ✓ [SUPPORTED]  Remain silent when asked about your immigration status, where you were
+         Reason: The context explicitly states that you have the right to remain silent when aske
+    ✓ [SUPPORTED]  Refuse to sign documents without an attorney present
+         Reason: The context explicitly states that you have the right to refuse to sign document
+    ✓ [SUPPORTED]  Request copies of any documents your attorney submits to immigration c
+         Reason: The context explicitly states that you have the right to request copies of any d
+  → Faithfulness Score : 0.8182  (81.8%)
+
+  RELEVANCY — ALTERNATIVE QUESTIONS
+    Q1 (sim=0.9958) : What are my rights if I'm detained by immigration officers?
+    Q2 (sim=0.8147) : What are the rights of a detained immigrant?
+    Q3 (sim=0.6748) : What can I do if I'm held by immigration authorities?
+  → Average Relevancy  : 0.8284
+
+----------------------------------------------------------------------
+
+  [QUERY 13]  Does signing an ICE form waive my right to a hearing?
+----------------------------------------------------------------------
+
+  ANSWER:
+    You have the right to refuse to sign any documents without first
+    speaking with an immigration attorney.
+
+  FAITHFULNESS
+    ✓ [SUPPORTED]  You have the right to refuse to sign any documents
+         Reason: The context explicitly states that you have the right to refuse to sign any docu
+    ✓ [SUPPORTED]  You have the right to speak with an immigration attorney before signin
+         Reason: The context explicitly states that you have the right to refuse to sign document
+  → Faithfulness Score : 1.0000  (100.0%)
+
+  RELEVANCY — ALTERNATIVE QUESTIONS
+    Q1 (sim=0.4778) : What are my rights when signing immigration documents?
+    Q2 (sim=0.4387) : Can I refuse to sign immigration documents?
+    Q3 (sim=0.3438) : What should I do before signing immigration documents?
+  → Average Relevancy  : 0.4201
+
+----------------------------------------------------------------------
+
+======================================================================
+END OF REPORT
+======================================================================
