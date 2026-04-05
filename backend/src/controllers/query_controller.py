@@ -42,7 +42,7 @@ class QueryController:
 
 
 def _validate_config(chunking: str, retrieval: str):
-    valid_chunking = {"fixed", "recursive", "semantic"}
+    valid_chunking = {"recursive"}
     valid_retrieval = {"semantic", "hybrid"}
     if chunking not in valid_chunking:
         raise HTTPException(

@@ -1,7 +1,7 @@
 import csv
 import json
 from pathlib import Path
-from src.config import EXPERIMENT_DIR, CHUNK_DIR, EMBED_DIR
+from src.config import EXPERIMENT_DIR, CHUNK_DIR
 
 
 def load_experiment_summary() -> list[dict]:
@@ -32,13 +32,8 @@ def load_chunking_report() -> str:
 
 
 def get_available_strategies() -> list[str]:
-    """Return strategy names that have both index and metadata."""
-    strategies = []
-    for strategy in ["fixed", "recursive", "semantic"]:
-        d = Path(EMBED_DIR) / strategy
-        if (d / "index.faiss").exists() and (d / "metadata.pkl").exists():
-            strategies.append(strategy)
-    return strategies
+    """Return strategy names available in Pinecone."""
+    return ["recursive"]
 
 
 def get_best_config() -> dict:

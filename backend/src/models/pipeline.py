@@ -1,5 +1,6 @@
 import time
-from src.utils.retrievers import SemanticRetriever, HybridRetriever
+from src.utils.retrievers import HybridRetriever
+from src.utils.pinecone_retriever import PineconeRetriever
 from src.utils.rerankers import CrossEncoderReranker
 from src.utils.generator import generate_answer
 from src.models.schemas import QueryResult
@@ -12,7 +13,7 @@ class RAGPipeline:
 
     def __init__(self, strategy: str, retrieval: str, rerank: bool):
         if retrieval == "semantic":
-            self.retriever = SemanticRetriever(strategy)
+            self.retriever = PineconeRetriever(strategy)
         elif retrieval == "hybrid":
             self.retriever = HybridRetriever(strategy)
         else:

@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(venv/Scripts/pip install:*)",
+      "Bash(../venv/Scripts/python build_pinecone.py)",
+      "Bash(../venv/Scripts/python -c ':*)",
+      "Bash(../venv/Scripts/python src/Test_pipeline/evaluate_llm_judge.py)"
     ]
   }
 }

@@ -1,7 +1,8 @@
-from groq import Groq
+from groq import Groq, RateLimitError
 import json
 import os
-import requests
+import re
+import time
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -9,10 +10,13 @@ from config import EMBED_MODEL, GROQ_API_KEY, GEN_MODEL
 
 client_groq = Groq(api_key=GROQ_API_KEY)
 
+_RETRY_RE = re.compile(r"try again in ([\d.]+)s")
+
 
 def hf_complete(prompt: str, max_new_tokens: int = 300) -> str:
     """
-    Call Groq inference via the OpenAI-compatible chat completions format.
+    Call Groq inference. Auto-retries on 429 rate-limit with the wait time
+    extracted from the error message (plus a 2-second buffer).
     """
     payload = {
         "model": GEN_MODEL,
@@ -20,11 +24,17 @@ def hf_complete(prompt: str, max_new_tokens: int = 300) -> str:
         "max_tokens": max_new_tokens,
         "temperature": 0.0,
     }
-    resp = client_groq.chat.completions.create(**payload)
-    try:
-        return resp.choices[0].message.content.strip()
-    except Exception as e:
-        raise RuntimeError(f"Unexpected Groq response format: {resp}") from e
+    for attempt in range(6):
+        try:
+            resp = client_groq.chat.completions.create(**payload)
+            return resp.choices[0].message.content.strip()
+        except RateLimitError as e:
+            msg = str(e)
+            m = _RETRY_RE.search(msg)
+            wait = float(m.group(1)) + 2.0 if m else 30.0
+            print(f"  [rate-limit] waiting {wait:.0f}s (attempt {attempt+1}/6)…")
+            time.sleep(wait)
+    raise RuntimeError("Groq rate limit not cleared after 6 retries")
 
 
 def extract_json_list(raw: str) -> list[str]:

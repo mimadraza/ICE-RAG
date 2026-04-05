@@ -1,85 +1,39 @@
 from __future__ import annotations
 
-import pickle
-from pathlib import Path
 from typing import Any
 
-import faiss
 import numpy as np
+import pandas as pd
 from rank_bm25 import BM25Okapi
-from sentence_transformers import SentenceTransformer
 
-from src.config import EMBED_DIR, EMBED_MODEL
+from src.config import CHUNK_FILES
+from src.utils.pinecone_retriever import PineconeRetriever
 
-_model_cache: dict[str, SentenceTransformer] = {}
-_data_cache: dict[str, tuple] = {}
-
-
-def _get_model() -> SentenceTransformer:
-    if EMBED_MODEL not in _model_cache:
-        _model_cache[EMBED_MODEL] = SentenceTransformer(EMBED_MODEL)
-    return _model_cache[EMBED_MODEL]
+_bm25_cache: dict[str, tuple] = {}
 
 
-def load_strategy_data(strategy: str) -> tuple[faiss.Index, list[dict[str, Any]]]:
-    if strategy in _data_cache:
-        return _data_cache[strategy]
+def _load_bm25_data(strategy: str) -> tuple[list[str], list[dict]]:
+    if strategy in _bm25_cache:
+        return _bm25_cache[strategy]
 
-    strategy_dir = Path(EMBED_DIR) / strategy
-    index_path = strategy_dir / "index.faiss"
-    meta_path = strategy_dir / "metadata.pkl"
+    csv_path = CHUNK_FILES.get(strategy)
+    if csv_path is None or not csv_path.exists():
+        raise FileNotFoundError(f"Chunk CSV not found for strategy '{strategy}': {csv_path}")
 
-    if not index_path.exists():
-        raise FileNotFoundError(f"Missing FAISS index: {index_path}")
-    if not meta_path.exists():
-        raise FileNotFoundError(f"Missing metadata file: {meta_path}")
+    df = pd.read_csv(csv_path)
+    df = df[df["text"].notna() & (df["text"].str.strip() != "")].reset_index(drop=True)
+    texts = df["text"].tolist()
+    meta  = df.to_dict(orient="records")
 
-    index = faiss.read_index(str(index_path))
-    with open(meta_path, "rb") as f:
-        meta = pickle.load(f)
-
-    if not isinstance(meta, list):
-        raise ValueError(f"Expected list metadata, got {type(meta)}")
-
-    _data_cache[strategy] = (index, meta)
-    return index, meta
-
-
-class SemanticRetriever:
-    def __init__(self, strategy: str):
-        self.strategy = strategy
-        self.index, self.meta = load_strategy_data(strategy)
-        self.model = _get_model()
-
-    def retrieve(self, query: str, top_k: int = 10) -> list[dict[str, Any]]:
-        if not query or not query.strip():
-            return []
-
-        query_emb = self.model.encode(
-            [query], convert_to_numpy=True, normalize_embeddings=True
-        ).astype("float32")
-
-        distances, indices = self.index.search(query_emb, top_k)
-
-        results = []
-        for score, idx in zip(distances[0], indices[0]):
-            if idx == -1 or idx >= len(self.meta):
-                continue
-            results.append({
-                **self.meta[idx],
-                "score": float(score),
-                "retrieval_type": "semantic",
-                "strategy": self.strategy,
-            })
-        return results
+    _bm25_cache[strategy] = (texts, meta)
+    return texts, meta
 
 
 class BM25Retriever:
     def __init__(self, strategy: str):
         self.strategy = strategy
-        _, self.meta = load_strategy_data(strategy)
-        self.texts = [str(m.get("text", "")) for m in self.meta]
-        self.tokenized = [t.lower().split() for t in self.texts]
+        texts, self.meta = _load_bm25_data(strategy)
+        self.tokenized = [t.lower().split() for t in texts]
         self.bm25 = BM25Okapi(self.tokenized)
 
     def retrieve(self, query: str, top_k: int = 10) -> list[dict[str, Any]]:
@@ -124,16 +78,14 @@ def reciprocal_rank_fusion(
 class HybridRetriever:
     def __init__(self, strategy: str):
         self.strategy = strategy
-        self.semantic = SemanticRetriever(strategy)
-        self.bm25 = BM25Retriever(strategy)
+        self.semantic = PineconeRetriever(strategy)
+        self.bm25     = BM25Retriever(strategy)
 
     def retrieve(self, query: str, top_k: int = 10, candidate_k: int = None) -> list[dict[str, Any]]:
         if not query or not query.strip():
             return []
-        # Always fetch at least 3x top_k per source so RRF has enough candidates to
-        # distinguish good from mediocre results before truncating.
         pool = max(top_k * 3, 30) if candidate_k is None else candidate_k
-        sem = self.semantic.retrieve(query, top_k=pool)
+        sem  = self.semantic.retrieve(query, top_k=pool)
         bm25 = self.bm25.retrieve(query, top_k=pool)
         fused = reciprocal_rank_fusion([sem, bm25])
         return fused[:top_k]
