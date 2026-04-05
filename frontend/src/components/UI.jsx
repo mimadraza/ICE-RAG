@@ -142,7 +142,7 @@ export function ErrorBox({ message }) {
       lineHeight: 1.6,
       letterSpacing: '0.05em',
     }}>
-      <span style={{ color: 'var(--accent)', fontWeight: 500 }}>★ ОШИБКА: </span>{message}
+      <span style={{ color: 'var(--accent)', fontWeight: 500 }}>★ ERROR: </span>{message}
     </div>
   );
 }

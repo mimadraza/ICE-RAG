@@ -21,7 +21,7 @@ export default function App() {
   }, []);
 
   const statusColor = apiStatus === 'online' ? '#4CAF50' : apiStatus === 'offline' ? 'var(--accent)' : 'var(--text-muted)';
-  const statusLabel = apiStatus === 'online' ? 'СИСТЕМА АКТИВНА' : apiStatus === 'offline' ? 'СИСТЕМА НЕДОСТУПНА' : 'СОЕДИНЕНИЕ...';
+  const statusLabel = apiStatus === 'online' ? 'SYSTEM ACTIVE' : apiStatus === 'offline' ? 'SYSTEM OFFLINE' : 'CONNECTING...';
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
@@ -103,7 +103,7 @@ export default function App() {
       }} />
 
       {/* Main content */}
-      <main style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      <main style={{ flex: 1, minHeight: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
         <QueryPage config={DEFAULT_CONFIG} />
       </main>
     </div>

@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { api } from '../api/client';
 import AnswerCard from '../components/AnswerCard';
 import { Button, Spinner, ErrorBox } from '../components/UI';
+import bannerImg from '../assets/banner.png';
 
 export default function QueryPage({ config }) {
   const [query, setQuery]     = useState('');
@@ -50,78 +51,21 @@ export default function QueryPage({ config }) {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0, overflow: 'hidden' }}>
 
-      {/* Input area */}
-      <div style={{
-        padding: '20px 32px',
-        borderBottom: '2px solid var(--border)',
-        background: 'var(--surface)',
-      }}>
-        <div style={{
-          fontFamily: 'var(--mono)',
-          fontSize: 9,
-          letterSpacing: '0.25em',
-          color: 'var(--text-muted)',
-          textTransform: 'uppercase',
-          marginBottom: 10,
-        }}>
-          ▶ ЗАПРОС / QUERY INPUT
-        </div>
-        <div style={{ display: 'flex', gap: 12, alignItems: 'flex-end' }}>
-          <div style={{
-            flex: 1,
-            border: '2px solid var(--border)',
-            position: 'relative',
-          }}>
-            <div style={{
-              position: 'absolute',
-              top: 0, left: 0,
-              width: 3,
-              height: '100%',
-              background: 'var(--accent)',
-            }} />
-            <textarea
-              ref={textareaRef}
-              value={query}
-              onChange={handleTextarea}
-              onKeyDown={handleKeyDown}
-              placeholder="Введите запрос…  (Enter — отправить, Shift+Enter — новая строка)"
-              rows={2}
-              style={{
-                width: '100%',
-                background: 'var(--surface2)',
-                border: 'none',
-                color: 'var(--text)',
-                fontFamily: 'var(--mono)',
-                fontSize: 13,
-                padding: '12px 14px 12px 18px',
-                resize: 'none',
-                outline: 'none',
-                lineHeight: 1.6,
-                minHeight: 54,
-                display: 'block',
-              }}
-            />
-          </div>
-          <Button
-            onClick={handleSubmit}
-            disabled={!query.trim() || loading}
-            style={{ minWidth: 100, height: 54, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
-          >
-            {loading ? <Spinner size={13} /> : 'ИСКАТЬ'}
-          </Button>
-        </div>
-      </div>
-
-      {/* Results */}
+      {/* Results — scrollable, fills available space */}
       <div style={{
         flex: 1,
+        minHeight: 0,
         overflowY: 'auto',
         padding: '24px 32px',
         display: 'flex',
         flexDirection: 'column',
         gap: 20,
+        backgroundImage: `linear-gradient(rgba(14,12,10,0.80), rgba(14,12,10,0.80)), url(${bannerImg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'local',
       }}>
         {error && <ErrorBox message={error} />}
 
@@ -152,7 +96,7 @@ export default function QueryPage({ config }) {
               textTransform: 'uppercase',
               color: 'var(--text-muted)',
             }}>
-              ОЖИДАНИЕ ЗАПРОСА
+              AWAITING QUERY
             </div>
             <div style={{
               fontFamily: 'var(--mono)',
@@ -169,6 +113,72 @@ export default function QueryPage({ config }) {
           <AnswerCard key={i} result={r} />
         ))}
       </div>
+
+      {/* Input area — pinned to bottom */}
+      <div style={{
+        padding: '20px 32px',
+        borderTop: '2px solid var(--border)',
+        background: 'var(--surface)',
+      }}>
+        <div style={{
+          fontFamily: 'var(--mono)',
+          fontSize: 9,
+          letterSpacing: '0.25em',
+          color: 'var(--text-muted)',
+          textTransform: 'uppercase',
+          marginBottom: 10,
+        }}>
+          ▶ QUERY INPUT
+        </div>
+        <div style={{ display: 'flex', gap: 12, alignItems: 'flex-end' }}>
+          <div style={{
+            flex: 1,
+            border: '2px solid var(--border)',
+            position: 'relative',
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: 0, left: 0,
+              width: 3,
+              height: '100%',
+              background: 'var(--accent)',
+            }} />
+            <textarea
+              ref={textareaRef}
+              value={query}
+              onChange={handleTextarea}
+              onKeyDown={handleKeyDown}
+              placeholder="ENTER YOUR QUERY…  (ENTER TO SEND · SHIFT+ENTER FOR NEW LINE)"
+              rows={2}
+              style={{
+                width: '100%',
+                background: 'var(--surface2)',
+                border: 'none',
+                color: 'var(--accent)',
+                fontFamily: 'var(--sans)',
+                fontSize: 15,
+                fontWeight: 700,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                padding: '12px 14px 12px 18px',
+                resize: 'none',
+                outline: 'none',
+                lineHeight: 1.6,
+                minHeight: 54,
+                display: 'block',
+              }}
+            />
+          </div>
+          <Button
+            onClick={handleSubmit}
+            disabled={!query.trim() || loading}
+            style={{ minWidth: 100, height: 54, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+          >
+            {loading ? <Spinner size={13} /> : 'SEARCH'}
+          </Button>
+        </div>
+      </div>
+
     </div>
   );
 }

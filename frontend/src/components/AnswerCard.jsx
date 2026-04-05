@@ -46,7 +46,7 @@ export default function AnswerCard({ result }) {
           color: 'var(--text-muted)',
           letterSpacing: '0.1em',
         }}>
-          {sources?.length || 0} ИСТОЧНИКОВ
+          {sources?.length || 0} SOURCES
         </div>
       </div>
 
@@ -107,7 +107,7 @@ export default function AnswerCard({ result }) {
               transform: sourcesOpen ? 'rotate(90deg)' : 'none',
               color: 'var(--accent)',
             }}>▶</span>
-            ИСТОЧНИКИ ({sources.length})
+            SOURCES ({sources.length})
           </div>
 
           {sourcesOpen && (
