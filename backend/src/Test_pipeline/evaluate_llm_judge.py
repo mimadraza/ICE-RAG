@@ -12,37 +12,32 @@ from dotenv import load_dotenv
 _ENV = Path(__file__).resolve().parents[2] / ".env"
 load_dotenv(_ENV)
 
-# Allow imports from Test_pipeline directory
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import numpy as np
 import pandas as pd
-from rank_bm25 import BM25Okapi
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
 
 from evaluators import extract_claims, verify_claims, RelevancyScorer
 from generator import generate_answer
 from rerankers import CrossEncoderReranker
-
-try:
-    from pinecone import Pinecone
-except ImportError:
-    raise ImportError("Run: pip install pinecone")
+from retrievers import SemanticRetriever, HybridRetriever
 
 # ── Config ────────────────────────────────────────────────────────────────────
-PINECONE_API_KEY  = os.getenv("PINECONE_API_KEY", "")
-PINECONE_INDEX    = "rag-index"
-NAMESPACE         = "recursive"
-
-BASE_DIR          = Path(__file__).resolve().parents[2]
-CHUNK_CSV         = BASE_DIR / "data" / "chunking" / "chunks_recursive.csv"
-REPORT_DIR        = BASE_DIR / "data" / "experiments"
+BASE_DIR   = Path(__file__).resolve().parents[2]
+REPORT_DIR = BASE_DIR / "data" / "experiments"
 REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
-EMBED_MODEL       = "sentence-transformers/all-MiniLM-L6-v2"
-RETRIEVE_K        = 10
-FINAL_K           = 5
+RETRIEVE_K = 10
+FINAL_K    = 5
+
+CHUNK_STRATEGIES     = ["fixed", "recursive", "semantic"]
+RETRIEVAL_STRATEGIES = ["semantic", "hybrid"]
+
+EXPERIMENTS = [
+    {"chunking": chunking, "retrieval": retrieval}
+    for chunking in CHUNK_STRATEGIES
+    for retrieval in RETRIEVAL_STRATEGIES
+]
 
 # ── Fixed test set (15 queries) ───────────────────────────────────────────────
 TEST_QUERIES = [
@@ -63,76 +58,23 @@ TEST_QUERIES = [
     {"id": 15, "query": "What is a know-your-rights card and how does it help during ICE encounters?"},
 ]
 
-# ── Retrieval helpers ─────────────────────────────────────────────────────────
 
-def build_bm25(csv_path: Path):
-    df = pd.read_csv(csv_path)
-    df = df[df["text"].notna() & (df["text"].str.strip() != "")].reset_index(drop=True)
-    meta = df.to_dict(orient="records")
-    tokenized = [str(m["text"]).lower().split() for m in meta]
-    return BM25Okapi(tokenized), meta
+# ── Retriever factory ─────────────────────────────────────────────────────────
 
-
-def reciprocal_rank_fusion(lists: list[list[dict]], k: int = 60) -> list[dict]:
-    scores: dict[str, float] = {}
-    doc_map: dict[str, dict] = {}
-    for results in lists:
-        for rank, doc in enumerate(results, start=1):
-            cid = doc.get("chunk_id")
-            if not cid:
-                continue
-            scores[cid] = scores.get(cid, 0.0) + 1.0 / (k + rank)
-            if cid not in doc_map:
-                doc_map[cid] = doc
-    merged = [{**doc_map[c], "rrf_score": s} for c, s in scores.items()]
-    merged.sort(key=lambda x: x["rrf_score"], reverse=True)
-    return merged
-
-
-class HybridPineconeRetriever:
-    """Pinecone semantic + BM25 CSV, fused with RRF."""
-
-    def __init__(self):
-        if not PINECONE_API_KEY:
-            raise EnvironmentError("PINECONE_API_KEY not set")
-        pc = Pinecone(api_key=PINECONE_API_KEY)
-        self._pine = pc.Index(PINECONE_INDEX)
-        self._model = SentenceTransformer(EMBED_MODEL)
-        self._bm25, self._meta = build_bm25(CHUNK_CSV)
-
-    def _semantic(self, query: str, top_k: int) -> list[dict]:
-        emb = self._model.encode([query], normalize_embeddings=True)
-        resp = self._pine.query(
-            vector=emb[0].tolist(),
-            top_k=top_k,
-            namespace=NAMESPACE,
-            include_metadata=True,
-        )
-        results = []
-        for m in resp.matches:
-            doc = dict(m.metadata) if m.metadata else {}
-            doc["chunk_id"] = m.id
-            doc["score"] = float(m.score)
-            results.append(doc)
-        return results
-
-    def _bm25_retrieve(self, query: str, top_k: int) -> list[dict]:
-        scores = self._bm25.get_scores(query.lower().split())
-        idxs = np.argsort(scores)[::-1][:top_k]
-        return [{**self._meta[i], "score": float(scores[i])} for i in idxs]
-
-    def retrieve(self, query: str, top_k: int = RETRIEVE_K) -> list[dict]:
-        pool = max(top_k * 3, 30)
-        sem  = self._semantic(query, pool)
-        bm25 = self._bm25_retrieve(query, pool)
-        return reciprocal_rank_fusion([sem, bm25])[:top_k]
+def build_retriever(chunking: str, retrieval: str):
+    if retrieval == "semantic":
+        return SemanticRetriever(chunking)
+    elif retrieval == "hybrid":
+        return HybridRetriever(chunking)
+    else:
+        raise ValueError(f"Unknown retrieval strategy: {retrieval!r}")
 
 
 # ── Per-query evaluation ──────────────────────────────────────────────────────
 
 def run_and_evaluate(
     query: str,
-    retriever: HybridPineconeRetriever,
+    retriever,
     reranker: CrossEncoderReranker,
     rel_scorer: RelevancyScorer,
 ) -> dict:
@@ -159,28 +101,33 @@ def run_and_evaluate(
     rel_score, rel_scores = rel_scorer.score(query, alt_questions)
 
     return {
-        "query":             query,
-        "answer":            answer,
-        "retrieved_docs":    docs,
-        "retrieval_time":    round(retrieval_time, 3),
-        "generation_time":   round(generation_time, 3),
-        "total_time":        round(retrieval_time + generation_time, 3),
-        "claims":            claims,
+        "query":              query,
+        "answer":             answer,
+        "retrieved_docs":     docs,
+        "retrieval_time":     round(retrieval_time, 3),
+        "generation_time":    round(generation_time, 3),
+        "total_time":         round(retrieval_time + generation_time, 3),
+        "claims":             claims,
         "claim_verification": verifications,
-        "faithfulness":      round(faith_score, 4),
-        "alt_questions":     alt_questions,
-        "relevancy_scores":  [round(s, 4) for s in rel_scores],
-        "relevancy":         round(rel_score, 4),
+        "faithfulness":       round(faith_score, 4),
+        "alt_questions":      alt_questions,
+        "relevancy_scores":   [round(s, 4) for s in rel_scores],
+        "relevancy":          round(rel_score, 4),
     }
 
 
-# ── Report generation ─────────────────────────────────────────────────────────
+# ── Report helpers ────────────────────────────────────────────────────────────
 
 def _supported(v: dict) -> str:
     return "✓" if v.get("label") == "supported" else "✗"
 
 
-def build_text_report(results: list[dict], detail_ids: list[int]) -> str:
+def build_experiment_report(
+    results: list[dict],
+    chunking: str,
+    retrieval: str,
+    detail_ids: list[int],
+) -> str:
     lines = []
     sep  = "=" * 70
     sep2 = "-" * 70
@@ -192,7 +139,7 @@ def build_text_report(results: list[dict], detail_ids: list[int]) -> str:
         sep,
         "  LLM-AS-A-JUDGE EVALUATION REPORT",
         f"  Generated : {datetime.now().strftime('%Y-%m-%d %H:%M')}",
-        f"  Config    : recursive | hybrid (Pinecone + BM25) | rerank=True",
+        f"  Config    : chunking={chunking} | retrieval={retrieval} | rerank=True",
         f"  Queries   : {len(results)}",
         sep,
         "",
@@ -232,7 +179,6 @@ def build_text_report(results: list[dict], detail_ids: list[int]) -> str:
             "",
             "  ANSWER:",
         ]
-        # Word-wrap answer at ~65 chars
         words, line_buf = r["answer"].split(), []
         for w in words:
             line_buf.append(w)
@@ -267,66 +213,145 @@ def build_text_report(results: list[dict], detail_ids: list[int]) -> str:
     return "\n".join(lines)
 
 
+def build_comparison_report(summary_rows: list[dict]) -> str:
+    lines = []
+    sep  = "=" * 80
+    sep2 = "-" * 80
+
+    lines += [
+        sep,
+        "  LLM-AS-A-JUDGE  —  EXPERIMENT COMPARISON",
+        f"  Generated : {datetime.now().strftime('%Y-%m-%d %H:%M')}",
+        f"  Experiments : {len(summary_rows)}   |   "
+        f"Chunking: {CHUNK_STRATEGIES}   |   Retrieval: {RETRIEVAL_STRATEGIES}",
+        sep,
+        "",
+        f"  {'Chunking':>10}  {'Retrieval':>10}  {'Faithfulness':>12}  {'Relevancy':>10}"
+        f"  {'Avg Time(s)':>12}",
+        sep2,
+    ]
+
+    sorted_rows = sorted(summary_rows, key=lambda x: (x["avg_faithfulness"] + x["avg_relevancy"]), reverse=True)
+    for row in sorted_rows:
+        lines.append(
+            f"  {row['chunking']:>10}  {row['retrieval']:>10}"
+            f"  {row['avg_faithfulness']:>12.4f}  {row['avg_relevancy']:>10.4f}"
+            f"  {row['avg_total_time']:>12.2f}"
+        )
+
+    lines += [
+        "",
+        sep2,
+        "  Sorted by (faithfulness + relevancy) descending — best combination first.",
+        sep,
+        "END OF COMPARISON",
+        sep,
+    ]
+    return "\n".join(lines)
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    print("Initialising components...")
-    retriever  = HybridPineconeRetriever()
     reranker   = CrossEncoderReranker()
     rel_scorer = RelevancyScorer()
-    print(f"Running evaluation on {len(TEST_QUERIES)} queries...\n")
 
-    results = []
-    for item in TEST_QUERIES:
-        qid   = item["id"]
-        query = item["query"]
-        print(f"  [{qid:02d}/{len(TEST_QUERIES)}] {query[:65]}")
-
-        result = run_and_evaluate(query, retriever, reranker, rel_scorer)
-        result["id"] = qid
-        results.append(result)
-
-        print(
-            f"         faith={result['faithfulness']:.3f}"
-            f"  rel={result['relevancy']:.3f}"
-            f"  claims={len(result['claims'])}"
-            f"  t={result['total_time']:.1f}s"
-        )
-
-    # ── Save JSON ──────────────────────────────────────────────────────────────
-    json_path = REPORT_DIR / "llm_judge_results.json"
-
-    # Serialise: strip retrieved_docs text to keep file manageable
-    json_safe = []
-    for r in results:
-        rec = {k: v for k, v in r.items() if k != "retrieved_docs"}
-        rec["sources"] = [
-            {"chunk_id": d.get("chunk_id"), "doc_id": d.get("doc_id")}
-            for d in r["retrieved_docs"]
-        ]
-        json_safe.append(rec)
-
-    with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(json_safe, f, ensure_ascii=False, indent=2)
-
-    # ── Save text report ───────────────────────────────────────────────────────
-    # Show detailed breakdown for queries 1, 7, 13
+    all_summary_rows: list[dict] = []
     detail_ids = [1, 7, 13]
-    report_text = build_text_report(results, detail_ids)
 
-    txt_path = REPORT_DIR / "llm_judge_report.txt"
-    txt_path.write_text(report_text, encoding="utf-8")
+    for exp in EXPERIMENTS:
+        chunking  = exp["chunking"]
+        retrieval = exp["retrieval"]
+        label     = f"{chunking}_{retrieval}"
 
-    # ── Print summary ──────────────────────────────────────────────────────────
-    print()
-    print("=" * 55)
-    avg_faith = sum(r["faithfulness"] for r in results) / len(results)
-    avg_rel   = sum(r["relevancy"]    for r in results) / len(results)
-    print(f"  FINAL  Avg Faithfulness: {avg_faith:.4f}  ({avg_faith*100:.1f}%)")
-    print(f"  FINAL  Avg Relevancy   : {avg_rel:.4f}")
-    print("=" * 55)
-    print(f"\nJSON report  → {json_path.relative_to(BASE_DIR)}")
-    print(f"Text report  → {txt_path.relative_to(BASE_DIR)}")
+        print(f"\n{'='*60}")
+        print(f"  Experiment: chunking={chunking}  retrieval={retrieval}")
+        print(f"{'='*60}")
+
+        try:
+            retriever = build_retriever(chunking, retrieval)
+        except FileNotFoundError as e:
+            print(f"  [SKIP] {e}")
+            continue
+
+        results: list[dict] = []
+        for item in TEST_QUERIES:
+            qid   = item["id"]
+            query = item["query"]
+            print(f"  [{qid:02d}/{len(TEST_QUERIES)}] {query[:65]}")
+
+            result = run_and_evaluate(query, retriever, reranker, rel_scorer)
+            result["id"] = qid
+            results.append(result)
+
+            print(
+                f"         faith={result['faithfulness']:.3f}"
+                f"  rel={result['relevancy']:.3f}"
+                f"  claims={len(result['claims'])}"
+                f"  t={result['total_time']:.1f}s"
+            )
+
+        avg_faith = sum(r["faithfulness"] for r in results) / len(results)
+        avg_rel   = sum(r["relevancy"]    for r in results) / len(results)
+        avg_time  = sum(r["total_time"]   for r in results) / len(results)
+
+        print(f"\n  >> {label}  faith={avg_faith:.4f}  rel={avg_rel:.4f}")
+
+        # ── Save per-experiment JSON ───────────────────────────────────────────
+        json_safe = []
+        for r in results:
+            rec = {k: v for k, v in r.items() if k != "retrieved_docs"}
+            rec["sources"] = [
+                {"chunk_id": d.get("chunk_id"), "doc_id": d.get("doc_id")}
+                for d in r["retrieved_docs"]
+            ]
+            json_safe.append(rec)
+
+        json_path = REPORT_DIR / f"llm_judge_{label}.json"
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(json_safe, f, ensure_ascii=False, indent=2)
+
+        # ── Save per-experiment text report ───────────────────────────────────
+        report_text = build_experiment_report(results, chunking, retrieval, detail_ids)
+        txt_path = REPORT_DIR / f"llm_judge_{label}.txt"
+        txt_path.write_text(report_text, encoding="utf-8")
+
+        print(f"  Saved → {json_path.name}  |  {txt_path.name}")
+
+        all_summary_rows.append({
+            "chunking":          chunking,
+            "retrieval":         retrieval,
+            "avg_faithfulness":  round(avg_faith, 4),
+            "avg_relevancy":     round(avg_rel, 4),
+            "avg_total_time":    round(avg_time, 3),
+            "n_queries":         len(results),
+        })
+
+    # ── Save comparison CSV ────────────────────────────────────────────────────
+    if all_summary_rows:
+        csv_path = REPORT_DIR / "llm_judge_comparison.csv"
+        pd.DataFrame(all_summary_rows).sort_values(
+            ["avg_faithfulness", "avg_relevancy"], ascending=False
+        ).to_csv(csv_path, index=False, encoding="utf-8")
+
+        # ── Save comparison text report ────────────────────────────────────────
+        cmp_txt  = build_comparison_report(all_summary_rows)
+        cmp_path = REPORT_DIR / "llm_judge_comparison.txt"
+        cmp_path.write_text(cmp_txt, encoding="utf-8")
+
+        print("\n" + "=" * 60)
+        print("  FINAL COMPARISON")
+        print("=" * 60)
+        for row in sorted(all_summary_rows, key=lambda x: x["avg_faithfulness"] + x["avg_relevancy"], reverse=True):
+            print(
+                f"  {row['chunking']:>10} | {row['retrieval']:>8}"
+                f"  faith={row['avg_faithfulness']:.4f}"
+                f"  rel={row['avg_relevancy']:.4f}"
+                f"  t={row['avg_total_time']:.2f}s"
+            )
+        print("=" * 60)
+        print(f"\nComparison CSV  → {csv_path.relative_to(BASE_DIR)}")
+        print(f"Comparison TXT  → {cmp_path.relative_to(BASE_DIR)}")
 
 
 if __name__ == "__main__":
