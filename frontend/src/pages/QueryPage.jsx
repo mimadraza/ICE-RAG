@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { api } from '../api/client';
 import AnswerCard from '../components/AnswerCard';
 import { Button, Spinner, ErrorBox } from '../components/UI';
@@ -6,17 +6,26 @@ import bannerImg from '../assets/banner.png';
 
 export default function QueryPage({ config }) {
   const [query, setQuery]     = useState('');
-  const [results, setResults] = useState([]);
+  const [messages, setMessages] = useState([]); // { type: 'user'|'answer'|'error', content }
   const [loading, setLoading] = useState(false);
-  const [error, setError]     = useState(null);
   const textareaRef = useRef(null);
+  const scrollRef   = useRef(null);
+
+  // Auto-scroll to bottom when new messages arrive or loading changes
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messages, loading]);
 
   const handleSubmit = async () => {
     const q = query.trim();
     if (!q || loading) return;
 
+    setMessages(prev => [...prev, { type: 'user', content: q }]);
+    setQuery('');
+    if (textareaRef.current) textareaRef.current.style.height = 'auto';
     setLoading(true);
-    setError(null);
 
     try {
       const res = await api.query({
@@ -27,11 +36,9 @@ export default function QueryPage({ config }) {
         retrieve_k: config.retrieveK,
         final_k:    config.finalK,
       });
-      setResults(prev => [res.data, ...prev]);
-      setQuery('');
-      if (textareaRef.current) textareaRef.current.style.height = 'auto';
+      setMessages(prev => [...prev, { type: 'answer', content: res.data }]);
     } catch (e) {
-      setError(e.message);
+      setMessages(prev => [...prev, { type: 'error', content: e.message }]);
     } finally {
       setLoading(false);
     }
@@ -53,23 +60,25 @@ export default function QueryPage({ config }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0, overflow: 'hidden' }}>
 
-      {/* Results — scrollable, fills available space */}
-      <div style={{
-        flex: 1,
-        minHeight: 0,
-        overflowY: 'auto',
-        padding: '24px 32px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 20,
-        backgroundImage: `linear-gradient(rgba(14,12,10,0.80), rgba(14,12,10,0.80)), url(${bannerImg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'local',
-      }}>
-        {error && <ErrorBox message={error} />}
-
-        {results.length === 0 && !loading && (
+      {/* Chat area — scrollable, fills available space */}
+      <div
+        ref={scrollRef}
+        style={{
+          flex: 1,
+          minHeight: 0,
+          overflowY: 'auto',
+          padding: '24px 32px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+          backgroundImage: `linear-gradient(rgba(14,12,10,0.80), rgba(14,12,10,0.80)), url(${bannerImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 25%',
+          backgroundAttachment: 'local',
+        }}
+      >
+        {/* Empty state */}
+        {messages.length === 0 && !loading && (
           <div style={{
             flex: 1,
             display: 'flex',
@@ -78,7 +87,7 @@ export default function QueryPage({ config }) {
             justifyContent: 'center',
             color: 'var(--text-muted)',
             gap: 16,
-            marginTop: 80,
+            paddingBottom: '60px',
             userSelect: 'none',
           }}>
             <div style={{
@@ -109,9 +118,50 @@ export default function QueryPage({ config }) {
           </div>
         )}
 
-        {results.map((r, i) => (
-          <AnswerCard key={i} result={r} />
-        ))}
+        {/* Message thread */}
+        {messages.map((msg, i) => {
+          if (msg.type === 'user') {
+            return (
+              <div key={i} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <div style={{
+                  maxWidth: '70%',
+                  background: 'var(--accent)',
+                  color: '#F0E8D8',
+                  fontFamily: 'var(--sans)',
+                  fontSize: 14,
+                  fontWeight: 600,
+                  letterSpacing: '0.05em',
+                  padding: '10px 16px',
+                  borderLeft: '4px solid #8B1500',
+                  lineHeight: 1.5,
+                  wordBreak: 'break-word',
+                }}>
+                  {msg.content}
+                </div>
+              </div>
+            );
+          }
+          if (msg.type === 'error') {
+            return <ErrorBox key={i} message={msg.content} />;
+          }
+          return <AnswerCard key={i} result={msg.content} />;
+        })}
+
+        {/* Loading indicator */}
+        {loading && (
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 10,
+            color: 'var(--text-muted)',
+            fontFamily: 'var(--mono)',
+            fontSize: 11,
+            letterSpacing: '0.15em',
+          }}>
+            <Spinner size={13} />
+            PROCESSING QUERY...
+          </div>
+        )}
       </div>
 
       {/* Input area — pinned to bottom */}
