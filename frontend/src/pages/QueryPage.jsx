@@ -122,7 +122,7 @@ export default function QueryPage({ config }) {
         {messages.map((msg, i) => {
           if (msg.type === 'user') {
             return (
-              <div key={i} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <div key={i} style={{ display: 'flex', justifyContent: 'flex-end', flexShrink: 0 }}>
                 <div style={{
                   maxWidth: '70%',
                   background: 'var(--accent)',
@@ -142,9 +142,9 @@ export default function QueryPage({ config }) {
             );
           }
           if (msg.type === 'error') {
-            return <ErrorBox key={i} message={msg.content} />;
+            return <ErrorBox key={i} message={msg.content} style={{ flexShrink: 0 }} />;
           }
-          return <AnswerCard key={i} result={msg.content} />;
+          return <div key={i} style={{ flexShrink: 0 }}><AnswerCard result={msg.content} /></div>;
         })}
 
         {/* Loading indicator */}
@@ -157,6 +157,7 @@ export default function QueryPage({ config }) {
             fontFamily: 'var(--mono)',
             fontSize: 11,
             letterSpacing: '0.15em',
+            flexShrink: 0,
           }}>
             <Spinner size={13} />
             PROCESSING QUERY...

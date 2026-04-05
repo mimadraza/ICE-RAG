@@ -11,7 +11,6 @@ export default function AnswerCard({ result }) {
       border: '2px solid var(--border)',
       borderLeft: '5px solid var(--accent)',
       animation: 'fadeUp 0.2s ease',
-      overflow: 'hidden',
     }}>
 
       {/* Header bar */}
