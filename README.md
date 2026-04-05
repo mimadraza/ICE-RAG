@@ -116,22 +116,6 @@ ICE-RAG/
 
 ---
 
-## 🤝 Contributing
-
-Community contributions are welcome — especially:
-
-- **New documents**: Legal guides, multilingual resources, state-specific rights info
-- **Translations**: Making this tool accessible in Spanish, Haitian Creole, and other languages
-- **Testing**: Helping verify the accuracy of generated responses against known legal facts
-
-To contribute:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/add-spanish-docs`)
-3. Commit your changes and open a Pull Request
-
----
-
 ## ⚠️ Disclaimer
 
 This tool is for **informational purposes only** and does not constitute legal advice. Immigration law is complex and situation-dependent. Always consult a qualified immigration attorney for guidance specific to your circumstances.
